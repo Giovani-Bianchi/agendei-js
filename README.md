@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/f6f322c7-7587-46b2-9e97-760b7da8ebac" height="75"/>
+</div>
+
 # Agendei JS - Sistema de consultas médicas
 Esse repositório irá conter os arquivos fontes referentes ao projeto Agendei JS da <a href="https://www.youtube.com/@devpoint.oficial">DevPoint</a>. Esse repositório já está populado com diversos arquivos pois eu estou publicando esse repositório depois do curso já ter sido concluído, porém irei continuar aprimorando o projeto da onde o curso parou.
 
