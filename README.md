@@ -27,10 +27,12 @@ A ideia do projeto foi criar um sistema de agendas de consultas médicas com int
 ## Layout do projeto
 
 ### Layout na aplicação web
-<img src="https://github.com/user-attachments/assets/7550e0a9-5a42-4ba1-9b89-d6827a983b5d" height="500" width="1000" />
-<img src="https://github.com/user-attachments/assets/594e09ee-101c-46fb-af26-de35ba495076" height="500" width="1000" />
-<img src="https://github.com/user-attachments/assets/bc4a0231-b3a0-474c-aa75-c5d00571bdf3" height="500" width="1000" />
-<img src="https://github.com/user-attachments/assets/bdca4ea2-d584-4b16-b054-b2caeb0caf9b" height="500" width="1000" />
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/7550e0a9-5a42-4ba1-9b89-d6827a983b5d" height="500" width="900" />
+  <img src="https://github.com/user-attachments/assets/594e09ee-101c-46fb-af26-de35ba495076" height="500" width="900" />
+  <img src="https://github.com/user-attachments/assets/ea062d75-93f4-4e19-98fa-cd6076ec4f72" height="500" width="900" />
+  <img src="https://github.com/user-attachments/assets/bdca4ea2-d584-4b16-b054-b2caeb0caf9b" height="500" width="900" />
+</div>
 
 ### Layout na aplicação mobile
 
