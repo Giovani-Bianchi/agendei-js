@@ -34,13 +34,15 @@ A ideia do projeto foi criar um sistema de agendas de consultas médicas com int
 
 ### Layout na aplicação mobile
 
-<img src="https://github.com/user-attachments/assets/1dd77a09-3b97-46f7-b24e-3798cf45b3b8" height="600" width="300" />
-<img src="https://github.com/user-attachments/assets/5cb6933a-f7e2-4242-93b6-d26aa31e31e0" height="600" width="300" />
-<img src="https://github.com/user-attachments/assets/de641aeb-4f54-4b57-9d22-c36908d87139" height="600" width="300" />
-<img src="https://github.com/user-attachments/assets/2d02a3d8-7e94-4681-8eac-71f77b43d0b9" height="600" width="300" />
-<img src="https://github.com/user-attachments/assets/96b97c9e-9a56-4204-aa4b-9f165c2eafbe" height="600" width="300" />
-<img src="https://github.com/user-attachments/assets/14c19c00-5f23-4036-a5a2-968035f4a368" height="600" width="300" />
-<img src="https://github.com/user-attachments/assets/51c882c6-f5bb-45d8-bd5c-a030dc1dd44f" height="600" width="300" />
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/1dd77a09-3b97-46f7-b24e-3798cf45b3b8" height="600" width="300" />
+  <img src="https://github.com/user-attachments/assets/5cb6933a-f7e2-4242-93b6-d26aa31e31e0" height="600" width="300" />
+  <img src="https://github.com/user-attachments/assets/de641aeb-4f54-4b57-9d22-c36908d87139" height="600" width="300" />
+  <img src="https://github.com/user-attachments/assets/2d02a3d8-7e94-4681-8eac-71f77b43d0b9" height="600" width="300" />
+  <img src="https://github.com/user-attachments/assets/96b97c9e-9a56-4204-aa4b-9f165c2eafbe" height="600" width="300" />
+  <img src="https://github.com/user-attachments/assets/14c19c00-5f23-4036-a5a2-968035f4a368" height="600" width="300" />
+  <img src="https://github.com/user-attachments/assets/51c882c6-f5bb-45d8-bd5c-a030dc1dd44f" height="600" width="300" />
+</div>
 
 ## Autor
 **Giovani Wesselka Heriberto Bianchi**
