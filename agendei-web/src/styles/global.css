@@ -1,0 +1,64 @@
+/*
+    ? CSS Global
+    -------------------------------------------------------------------------------------------------------
+*/
+
+/* --------------------------------------------------------------------------------------------------------
+ * Importação da Font Poppins
+ ---------------------------------------------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* --------------------------------------------------------------------------------------------------------
+ * General
+ ---------------------------------------------------------------------------------------------------------- */
+
+html, body {
+    /* Mudando a font family para Poppins */
+    font-family: "Poppins";
+
+    /* Remove a barra de rolagem horizontal */
+    overflow-x: hidden;
+}
+
+.mt-page {
+    /* Margem superior de toda página para evitar que o conteúdo das telas seja sobreposto pela Navbar */
+    margin-top: 90px;
+}
+
+select {
+    /* Sem bordas */
+    border: 0px;
+    outline: none;
+
+    /* Cor do fundo branca */
+    background-color: #fff;
+
+    /* Cursos pointer */
+    cursor: pointer;
+
+    /* Largura de 100% */
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------------------------------------
+ * React Modal - https://github.com/GA-MO/react-confirm-alert/blob/master/src/react-confirm-alert.css
+ ---------------------------------------------------------------------------------------------------------- */
+
+/* Fundo do modal */
+.react-confirm-alert-overlay {
+    background: rgb(0, 0, 0, 0.5) !important;
+}
+
+/* Conteúdo do modal */
+.react-confirm-alert-body {
+    width: 100% !important;
+    max-width: 600px !important;
+
+    border-radius: 5px !important;
+}
+
+/* Botões do modal */
+.react-confirm-alert-button-group > button {
+    width: 20%;
+}
