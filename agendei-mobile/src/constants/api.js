@@ -1,7 +1,6 @@
 /**
- * ? Arquivo de API
+ * * Arquivo de API
  * ------------------------------------------------
- * * Ao inserir uma URL base para sua aplicação, é necessário colocar o IP da sua máquina que estará rodando a API, e não o localhost
 */
 
 // Importação do axios

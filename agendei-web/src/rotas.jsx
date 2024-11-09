@@ -1,8 +1,6 @@
 /*
-    ? Arquivo de Rotas - Todo o mapeamento das páginas da nossa aplicação estará aqui
+    * Arquivo de Rotas - Todo o mapeamento das páginas da nossa aplicação estará aqui
     ----------------------------------------------------------------------------------------------------------
-    * Todas as rotas da aplicação ficam dentro da tag Routes
-    * Tag Route - a primeira propriedade é o path, que é a URL da página, e a segunda é a página que será exibida
 */
 
 // Importações do react-router-dom

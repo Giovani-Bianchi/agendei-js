@@ -1,8 +1,6 @@
 /**
- * ? Arquivo de Rotas
+ * * Arquivo de Rotas
  * ------------------------------------------------
- * * Responsável por manejar as rotas da aplicação, independente do usuário estar autenticado ou não
- * * É ele quem define se abre as rotas abertas ou as rotas privadas
 */
 
 // Importação dos Arquivos de Rotas

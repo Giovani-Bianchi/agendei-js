@@ -1,13 +1,6 @@
 /*
-    ? Tela de Login
+    * Tela de Login
     ----------------------------------------------------------------------------------------------------------
-    * Para fazer o POST para rota de user/login, será necessário capturar os dados dos inputs e montar a requisição para nossa API executar o login, iremos guardar no LocalStorage para numa próxima vez que o usuário abrir o site, ele permanecer logado
-
-    * onChange - Sempre que o usuário digitar algo no input, será chamada a função que irá capturar os dados e montar a requisição para a API. O 'e' passado como parâmetro da função dentro do onChange é o evento que foi disparado, que contém informações sobre o elemento que disparou o evento, nesse caso, o input
-
-    * Função Assíncrona - Faz o POST para a API e espera a resposta para poder guardar os dados na variável, e executa o restando do código enquanto espera por essa ação, então por ser assícrona ela espera uma resposta para poder agir. O método POST devolve uma Promise, que é uma promessa de que em algum momento os dados serão retornados para gente, e o await é usado para esperar a Promise ser resolvida, ou seja, para esperar a resposta da API. É necessário o uso do await quando se está trabalhando com Promises
-
-    * Iremos armazenar as informações do usuário no LocalStorage, para que quando o usuário abrir o site novamente, ele  permaneça logado, e não precise digitar novamente os dados para acessar o site. O Token que será o responsável por ser armazenado como chave para o usuário, inclusive por conta das rotas privadas. Não é recomendado salvar dados sigilosos dentro do Local Storage, pois ele é armazenado no navegador do usuário, e qualquer pessoa que tenha acesso ao navegador do usuário, terá acesso aos dados armazenados no Local Storage.
 */
 
 // Importando o CSS do Login
@@ -29,8 +22,8 @@ import api from "../../constants/api.js";
 function Login() {
 
     // Variáveis de estado para armazenar os dados inseridos pelo usuário nos inputs de email e senha
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("giovaniwhb@gmail.com");
+    const [password, setPassword] = useState("12345");
     
     // Variável de estado para a mensagem de erro do Login
     const [msg, setMsg] = useState("");
@@ -38,7 +31,7 @@ function Login() {
     // Instanciando o useNavigate
     const navigate = useNavigate();
 
-    // Função Assíncrona para Executar o Login - Faz o POST para a API e espera a resposta para poder guardar os dados na variável, e executa o restando do código enquanto espera por essa ação, então por ser assícrona ela espera uma resposta para poder agir. O método POST devolve uma Promise, que é uma promessa de que em algum momento os dados serão retornados para gente, e o await é usado para esperar a Promise ser resolvida, ou seja, para esperar a resposta da API. É necessário o uso do await quando se está trabalhando com Promises
+    // Função Assíncrona para Executar o Login
     async function ExecuteLogin() {
 
         // Zerando a mensagem de erro, assim quando o usuário clicar novamente no botão de Login, já que a variável de mensagem foi zerada, o Alert irá sumir
@@ -49,23 +42,22 @@ function Login() {
 
             // Criando a requisição de Login para a API usando o método POST
             const response = await api.post("/admin/login", {
-                // Aqui, como segundo parâmetro, abrimos as chaves e colocamos os dados que serão enviados para a API. Pelo nome das variáveis serem o mesmo da API, não precisamos fazer algo como "email: email", pois o React entende que o valor de email é o que deve ser, assim também para o password
                 email,
                 password
             });
 
             // Se no response existir o objeto 'data', significa que o login foi bem sucedido, então guardamos os dados no LocalStorage e redirecionamos o usuário
             if (response.data) {
-                // Incluíndo o item 'sessionToken' dentro do localStorage com o token recebido da API
+                // Incluindo o item 'sessionToken' dentro do localStorage com o token recebido da API
                 localStorage.setItem("sessionToken", response.data.token);
 
-                // Incluíndo o item 'sessionId' dentro do localStorage com o id do admin recebido da API
+                // Incluindo o item 'sessionId' dentro do localStorage com o id do admin recebido da API
                 localStorage.setItem("sessionId", response.data.id_admin);
 
-                // Incluíndo o item 'sessionEmail' dentro do localStorage com o email recebido da API
+                // Incluindo o item 'sessionEmail' dentro do localStorage com o email recebido da API
                 localStorage.setItem("sessionEmail", response.data.email);
 
-                // Incluíndo o item 'sessionName' dentro do localStorage com o nome recebido da API
+                // Incluindo o item 'sessionName' dentro do localStorage com o nome recebido da API
                 localStorage.setItem("sessionName", response.data.name);
 
                 // Salvando o token vindo da API para um header Authorization com o nome de "Bearer" dentro do Axios, para que todas as requisições futuras tenham o token já inseridos dentro delas, sem a necessidade de enviar novamente o token em toda requisição mesmo já estando logado

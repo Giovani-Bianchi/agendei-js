@@ -1,10 +1,6 @@
 /**
- * ? Arquivo de Rotas
+ * * Arquivo de Rotas
  * ------------------------------------------------
- * * O Router é responsável por gerenciar as rotas da aplicação
- * 
- * * Query Params - Os parâmetros que são passados pela URL
- * * URI Params - Os parâmetros fazem parte da própria URL
  */
 
 // * Importações

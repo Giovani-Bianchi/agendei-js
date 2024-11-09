@@ -1,5 +1,5 @@
 /**
- * ? Controller dos Usuários
+ * * Controller dos Usuários
  * ------------------------------------------------
  */
 
@@ -9,7 +9,7 @@ import serviceUser from "../services/service.user.js";
 // * --------------------------------------------MÉTODOS-------------------------------------------
 
 /**
- * * Função de Inserir Usuário Assícrona
+ * * Função de Inserir Usuário Assíncrona
  */
 async function Inserir(req, res) {
 
@@ -25,7 +25,7 @@ async function Inserir(req, res) {
 }
 
 /**
- * * Função de Login Assícrona
+ * * Função de Login Assíncrona
  */
 async function Login(req, res) {
 
@@ -50,7 +50,7 @@ async function Login(req, res) {
 }
 
 /**
- * * Função de Inserir Admin Assícrona
+ * * Função de Inserir Admin Assíncrona
  */
 async function InserirAdmin(req, res) {
 
@@ -66,7 +66,7 @@ async function InserirAdmin(req, res) {
 }
 
 /**
- * * Função de Login Admin Assícrona
+ * * Função de Login Admin Assíncrona
  */
 async function LoginAdmin(req, res) {
 
@@ -91,7 +91,7 @@ async function LoginAdmin(req, res) {
 }
 
 /**
- * * Função de Listar Campos do Usuário (Profile) Assícrona
+ * * Função de Listar Campos do Usuário (Profile) Assíncrona
 */ 
 async function Profile(req, res) {
 
@@ -107,7 +107,7 @@ async function Profile(req, res) {
 }
 
 /**
- * * Função de Listar Usuários para o Admin Assícrona
+ * * Função de Listar Usuários para o Admin Assíncrona
  */
 async function Listar(req, res) {
 

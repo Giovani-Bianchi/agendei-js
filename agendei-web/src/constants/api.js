@@ -1,9 +1,6 @@
 /*
-    ? API - Com Axios
+    * API - Com Axios
     ----------------------------------------------------------------------------------------------------------
-    * Aqui fica o axios, que ajuda muito na hora de construir as requisições para a API
-
-    * É muito interessante usar esse esquema da baseURL com o axios pois se algum dia por exemplo for necessário publicar essa API na nuvem, só é necessários mudar a baseURL e não ter que mudar a URL de cada requisição, facilitando muito a manutenção do código
 */
 
 // Importando o axios

@@ -1,9 +1,6 @@
 /**
- * ? Contexto Auth
+ * * Contexto Auth
  * ------------------------------------------------
- * * Irá controlar o contexto relacionado à autenticação
- * 
- * * É necessário criar um provedor de dados para esse contexto, que seria um lugar onde ficaria disponível apenas o que eu quero que fique aberto para qualquer parte da aplicação acessar, o que não estiver ali dentro, não estará acessível para toda a aplicação.
 */
 
 // Importações do react

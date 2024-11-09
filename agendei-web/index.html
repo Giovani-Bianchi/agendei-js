@@ -1,39 +1,6 @@
 <!-- 
-    ? Documentação - Representa o arquivo de entrada da aplicação
+    * Arquivo de Entrada da Aplicação
     ----------------------------------------------------------------------------------------------------------
-    * A div com id "root" é a div que o React utiliza para renderizar toda a nossa página
-    * Tudo que criamos no react é componente, e os componentes são nada mais que funções JS
-
-    * Por estarmos importando o Bootstrap nesse arquivo index.html, não importa o componente que iremos trabalhar, todos os componentes irão ter as estilizações prontas do Bootstrap
-    * Quando utilizamos React, o jeito de aplicar classes nas tags html é diferente, pois o React utiliza o conceito de JSX, que é uma sintaxe que permite a criação  de elementos HTML dentro do JavaScript, sendo assim, não utilizamos 'class' para mencionar uma classe CSS, mas sim 'className', pois 'class' é uma palavra reservada no JavaScript
-
-    * O React muda o conteúdo da tela sem que faça push back, ou seja, não faz reload da página, ele basicamente remove todas as tags html daquele componente e remonta as do novo conteúdo do componente chamado, isso é feito pelo React DOM
-
-    * Se olharmos dentro dos arquivos, eles possuem alguns métodos que acabam as vezes por poluir muito o arquvivo con funções relativas com aquela tela, pensando numa melhor organização, poderia ser interessante criar um arquivo adicional em cada pasta das telas para apenas conter as funções relacionadas com aquela tela, assim apenas necessitando de importar o arquivo de funções para o arquivo da tela, deixando o código mais limpo e apenas chamando as funções quando precisar
-
-    * Quando acabar o projeto: implementar a tela de doctors, que vai ser igualzinha a de agendamentos, com o filtro apenas de médicos, mudando apenas ao adicionar um médico que irá ter apenas os inputs de nome do médico e especialidade, proteger a rota de novo agendamento/novo médico e editar agendamento/editar médico, autocomplete com react, criar um contexto API para ao recarregar a página manter as informações de login, páginação, tela de cadastrar seviços a um médico
-
-    * ZOD - Biblioteca TypesScript para validação de dados
--->
-
-<!-- 
-    ? Comandos Utilizados
-    ----------------------------------------------------------------------------------------------------------
-    * npm create vite - Comando que cria um novo projeto utilizando o Vite, em que durante o processo ele pergunta qual framework JS será utilizado, ai seleciona o React
-    * npm install - Comando que instala a pasta node_modules e todos os pacotes necessários para o projeto indicado no package.json
-    * npm run dev - Roda a aplicação
-    * npm install react-router-dom - Instala o pacote de router do React para configurar as rotas da aplicação
-    * npm install axios - Instala o pacote axios para realizar requisições HTTP, facilitando a criação das mesmas
-    * npm install react-confirm-alert - Instala o pacote para criar alertas de confirmação, que será usado para confirmar a exclusão de agendamentos
--->
-
-<!-- 
-    ? Conceitos
-    ----------------------------------------------------------------------------------------------------------
-    * FRAGMENT - É necessário ter apenas um único componente na raiz do arquivo, se tiver mais de um componente, o React não consegue renderizar corretamente. Pode ser uma div por exemplo, mas nem sempre você quer renderizar uma div para  isso, então é utilizado o Fragment, que é uma tag vazia que não é renderizada no DOM <></>.
-    * ROTAS - Para acessar um link que leva a outra tela da aplicação, não utilizamos a tag 'a' do html, e sim o componente 'Link' do React Router Dom, que é um pacote que permite a criação de rotas na aplicação, desse jeito, ao clicar no link, a aplicação não faz reload, e sim atualiza a tela sem que faça reload
-
-    * WEB HOOK (NÃO FAZ PARTE DO PROJETO MAS É LEGAL SABER) - Alguém de fora que vai consumir sua API sempre que alguma coisa acontecer. Ex: na API de pagamento do ASAAS, vamos supor que lá seja gerado um pagamento para o usuário, quando ele fazer o pagamento, um WEB HOOK já configurado para quando houver o pagamento irá te notificar do pagamento, a função do WEB HOOK nesse caso é notificar o sistema do pagamento, e assim o sistema pode atualizar a tela do usuário para que ele saiba que o pagamento foi realizado, ou seja, o WEB HOOK irá consumir sua API para enviar esse status SEMPRE que um pagamento for feito, fazendo isso enviando para uma rota POST que você cadastrou por exemplo
 -->
 
 <!doctype html>

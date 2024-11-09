@@ -1,5 +1,5 @@
 /**
- * ? Arquivo de Rotas Abertas
+ * * Arquivo de Rotas Abertas
  * ------------------------------------------------
  * * Responsável por manejar as rotas da aplicação que não necessitam de autenticação do usuário
 */

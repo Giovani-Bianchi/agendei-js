@@ -3,11 +3,6 @@
  * 
  * * Projeto Calendário: https://github.com/wix/react-native-calendars
  * * Projeto Picker: https://github.com/react-native-picker/picker
- * 
- * * HOOKS - É uma forma simplificada de fazer manipulações dentro de nossas aplicações
- * * Iremos usar um Hook para salvar o estado de um componente
- * 
- * * Uma variável de estado nunca pode ser alterada diretamente, se usa a função para alterar o conteúdo dela
  */
 
 // Importando os estilos
@@ -40,7 +35,7 @@ LocaleConfig.defaultLocale = "pt-br";
 
 function Schedule(props) {
 
-    // Declarando as variáveis para poder mostras as informações dinâmicamente, isso foi recebido ao clicar no serviço e executar a função
+    // Declarando as variáveis para poder mostras as informações dinamicamente, isso foi recebido ao clicar no serviço e executar a função
     const id_doctor = props.route.params.id_doctor;
     const id_service = props.route.params.id_service;
 
@@ -101,7 +96,7 @@ function Schedule(props) {
                 mas vai extrair apenas o dia em formato string e jogar para a variável de estado 'selected' */
                 setSelectedDate(day.dateString)
             }} 
-            // Ao mudar o conteúdo da variável clicando em algum dia, ele entende que é necessário renderizar denovo com o dia marcado
+            // Ao mudar o conteúdo da variável clicando em algum dia, ele entende que é necessário renderizar de novo com o dia marcado
             markedDates={{
                 [selectedDate]: {selected: true}
             }}

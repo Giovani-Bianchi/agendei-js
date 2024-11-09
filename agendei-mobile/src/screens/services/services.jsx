@@ -20,7 +20,7 @@ import api from '../../constants/api.js';
 
 function Services(props) {
 
-    // Declarando as variáveis para poder mostras as informações dinâmicamente, isso foi recebido ao clicar no médico e executar a função
+    // Declarando as variáveis para poder mostras as informações dinamicamente, isso foi recebido ao clicar no médico e executar a função
     const id_doctor = props.route.params.id_doctor;
     const name = props.route.params.name;
     const specialty = props.route.params.specialty;

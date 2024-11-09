@@ -1,5 +1,5 @@
 /**
- * ? Arquivo de Rotas Fechadas (protegidas, que precisam de autenticação)
+ * * Arquivo de Rotas Fechadas (protegidas, que precisam de autenticação)
  * ------------------------------------------------
  * * Responsável por manejar as rotas da aplicação que necessitam de autenticação do usuário
 */

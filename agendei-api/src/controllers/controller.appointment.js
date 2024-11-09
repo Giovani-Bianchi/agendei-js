@@ -1,7 +1,6 @@
 /**
- * ? Controller das Reservas
+ * * Controller das Reservas
  * ------------------------------------------------
- * * A função de Listar e ListarByUser chamam a mesma função na service do appointment, mas passam diferentes parâmetros, para que a mesma função possa ser utilizada em diferentes contextos. É passado 0 para o id_user na função de Listar (admin) e passado os 3 parâmetros que só serve pro Admin na função de ListarByUser (usuário) vazios
  */
 
 // Importação da Service
@@ -10,7 +9,7 @@ import serviceAppointment from "../services/service.appointment.js";
 // * --------------------------------------------MÉTODOS-------------------------------------------
 
 /**
- * * Função de Listar Reservas para o Admin Assícrona
+ * * Função de Listar Reservas para o Admin Assíncrona
 */ 
 async function Listar(req, res) {
 
@@ -32,7 +31,7 @@ async function Listar(req, res) {
 }
 
 /**
- * * Função de Listar Reservas por Usuário Assícrona
+ * * Função de Listar Reservas por Usuário Assíncrona
 */ 
 async function ListarByUser(req, res) {
 
@@ -64,7 +63,7 @@ async function ListarId(req, res) {
 }
 
 /**
- * * Função de Inserir Reservas Assícrona
+ * * Função de Inserir Reservas Assíncrona
  */
 async function Inserir(req, res) {
 
@@ -83,7 +82,7 @@ async function Inserir(req, res) {
 }
 
 /**
- * * Função de Inserir Reservas do Admin Assícrona
+ * * Função de Inserir Reservas do Admin Assíncrona
  */
 async function InserirAdmin(req, res) {
 
@@ -99,7 +98,7 @@ async function InserirAdmin(req, res) {
 }
 
 /**
- * * Função de Editar Reservas do Admin Assícrona
+ * * Função de Editar Reservas do Admin Assíncrona
  */
 async function EditarAdmin(req, res) {
 
@@ -118,7 +117,7 @@ async function EditarAdmin(req, res) {
 }
 
 /**
- * * Função de Excluir Reservas Assícrona
+ * * Função de Excluir Reservas Assíncrona
  */
 async function Excluir(req, res) {
 
@@ -131,7 +130,7 @@ async function Excluir(req, res) {
     // Aguardando a função 'Excluir' do serviceAppointment
     const appointment = await serviceAppointment.Excluir(id_user, id_appointment);
 
-    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados que foram exluídos da reserva
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados que foram excluídos da reserva
     res.status(200).json(appointment);
 
 }

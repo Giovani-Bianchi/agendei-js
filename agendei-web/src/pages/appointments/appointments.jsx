@@ -1,10 +1,6 @@
 /*
-    ? Tela de Agendamentos
+    * Tela de Agendamentos
     ----------------------------------------------------------------------------------------------------------
-    * O map() funciona como um foreach que percorre um array e faz uma função para cada elemento, retornando o resultado
-    * Quando usamos o map(), é necessário passar a propriedade 'key', que será o identificador único do appointment na tela
-    
-    * Iremos usar o hook useEffect() para listar os appointments toda vez que entrar na tela. O useEffect() é usado para executar uma função quando alguma coisa acontecer, nesse caso, quando o componente é montado ou atualizado.
 */
 
 // Importando o CSS dos Appointments

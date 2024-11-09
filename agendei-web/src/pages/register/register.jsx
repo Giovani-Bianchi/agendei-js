@@ -1,5 +1,5 @@
 /*
-    ? Tela de Registro
+    * Tela de Registro
     ----------------------------------------------------------------------------------------------------------
 */
 
@@ -56,16 +56,16 @@ function Register() {
 
             // Se no response existir o objeto 'data', significa que o registro foi bem sucedido, então guardamos os dados no LocalStorage e redirecionamos o usuário
             if (response.data) {
-                // Incluíndo o item 'sessionToken' dentro do localStorage com o token recebido da API
+                // Incluindo o item 'sessionToken' dentro do localStorage com o token recebido da API
                 localStorage.setItem("sessionToken", response.data.token);
 
-                // Incluíndo o item 'sessionId' dentro do localStorage com o id do admin recebido da API
+                // Incluindo o item 'sessionId' dentro do localStorage com o id do admin recebido da API
                 localStorage.setItem("sessionId", response.data.id_admin);
 
-                // Incluíndo o item 'sessionEmail' dentro do localStorage com o email inserido no input
+                // Incluindo o item 'sessionEmail' dentro do localStorage com o email inserido no input
                 localStorage.setItem("sessionEmail", email);
 
-                // Incluíndo o item 'sessionName' dentro do localStorage com o nome inserido no input
+                // Incluindo o item 'sessionName' dentro do localStorage com o nome inserido no input
                 localStorage.setItem("sessionName", name);
 
                 // Salvando o token vindo da API para um header Authorization com o nome de "Bearer" dentro do Axios, para que todas as requisições futuras tenham o token já inseridos dentro delas, sem a necessidade de enviar novamente o token em toda requisição mesmo já estando logado

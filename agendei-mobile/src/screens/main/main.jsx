@@ -1,8 +1,5 @@
 /**
  * * Tela Main - Irá conter a navegação entre todas as telas do aplicativo (abahome, abacalendar e abaprofile), com as bottom navigations
- * 
- * * Toda a navegação da aplicação precisa estar num elemento chamado NavigationContainer, independente do tipo de navegação (bottom, drawer, stack..)
- * * Nesse caso, já que iremos usar a navegação stack também, essa tag NavigationContainer irá ficar na raiz do projeto, assim garanto que o que abrir da raiz (App.js), estará dentro da tag do NavigationContainer
  */
 
 // Importações do react-native

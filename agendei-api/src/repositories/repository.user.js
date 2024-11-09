@@ -1,5 +1,5 @@
 /**
- * ? Repository dos Usuários
+ * * Repository dos Usuários
  * ------------------------------------------------
  */
 

@@ -1,10 +1,6 @@
 /**
- * ? Arquivo de Token
+ * * Arquivo de Token
  * ------------------------------------------------
- * * Irá criar os tokens e validar os tokens
- * * Quando receber uma requisição e o token estiver lá, será possível saber o id_user pelo token, já que é uma das informações que ele irá conter
- * 
- * * Quando receber uma requisição, irá passar pela validação do token e se for validado irá passar para o controller fazer o que foi pedido
  */
 
 // Importação do jsonwebtoken
@@ -36,7 +32,7 @@ function ValidateToken(req, res, next) {
         return res.status(401).json({error: "Token não informado"});
     }
 
-    // Desprezando o texto 'Bearer' e o espaço  em branco, para pegar apenas o token. Irá pegar o token e irá 'cortar' quando encontrar um espaço em branco, e irá guardar o 'Bearer' dentro da variável bearer e o token dentro da variável token
+    // Desprezando o texto 'Bearer' e o espaço em branco, para pegar apenas o token. Irá pegar o token e irá 'cortar' quando encontrar um espaço em branco, e irá guardar o 'Bearer' dentro da variável bearer e o token dentro da variável token
     const [bearer, token] = authToken.split(" ") // "Bearer " "0000000000"
 
     // Fazendo a verificação do token, ou irá retornar um erro (err) ou irá retornar o token já decodificado (tokenDecoded)

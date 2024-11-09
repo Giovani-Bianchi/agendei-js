@@ -1,15 +1,12 @@
 /**
- * * Esse seria o CSS do React, uma função JS com nome de styles que dentro possui as classes de estilização do botão nesse caso
- * * Lembrando que as propriedades do CSS no JS não possui o '-', ao invés disso é usado a letra maiúscula. Exemplo:  background-color -> backgroundColor
- * 
- * * Assim é possível separar os estilos do código
+ * * CSS do Botão
 */
 
+// Importando as cores e font sizes do arquivo de theme.js
 import { COLORS, FONT_SIZE } from "../../constants/theme.js";
 
 export const styles = {
 
-    // Criando uma classe para ao chamar o 'style' no componente, poder chamar esse classe e aplicar esses estilos
     btn: {
         width: "100%",
         borderRadius: 6,

@@ -1,18 +1,6 @@
 /**
- * ? Arquivo de Configuração do SQLite
+ * * Arquivo de Configuração do SQLite
  * ------------------------------------------------
- * * Passo a passo da configuração:
- * 1 - Instalar o SQLite3
- * 2 - Criar o arquivo de configuração
- * 3 - Importar o sqlite3
- * 4 - Instanciar o sqlite3
- * 5 - OPCIONAL: Criar a função query
- * 6 - Criar a constante de conexão com o BD
- * 7 - Exportar a constante de conexão (e se criado, a query também)
- * 
- * * Promise - Executa algo com a 'promessa' que aquilo irá te devolver alguma coisa no futuro, espera o comando executar por completo antes de devolver os dados para gente
- * * Criamos um Promise, mandar ele executar alguma coisa e esperar a 'promessa' que ele irá terminar o comando em algum momento
- * * Quando o Promise termina o comando, ele pode terminar com sucesso ou com algum eventual erro (resolve e reject)
  */
 
 // * Importando o SQLite3

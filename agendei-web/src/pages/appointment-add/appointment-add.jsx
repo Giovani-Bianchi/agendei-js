@@ -1,7 +1,6 @@
 /*
-    ? Tela de Adicionar/Editar Agendamento
+    * Tela de Adicionar/Editar Agendamento
     ----------------------------------------------------------------------------------------------------------
-    * Aqui ficará a criação de um novo agendamento ou a edição, depende se estará recebendo um id, caso esteja, será uma edição. Isso será verificado nas rotas
 */
 
 // Importando o CSS da tela de Adicionar Agendamento
@@ -286,7 +285,7 @@ function AppointmentAdd() {
                 {/* Título de Nova Agendamento */}
                 <div className="col-12 mt-2">
                     {/* Se o id_appointment foi maior que 0, significa que é edição, então coloca o título "Editar Agendamento", senão, coloca "Nova Agendamento", que é criação */}
-                    <h2>{id_appointment > 0 ? "Editar Agendamento" : "Nova Agendamento"}</h2>
+                    <h2>{id_appointment > 0 ? "Editar Agendamento" : "Novo Agendamento"}</h2>
                 </div>
 
                 {/* Select com a lista de pacientes */}

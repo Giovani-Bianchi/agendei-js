@@ -1,16 +1,6 @@
 /**
- * ? Repository dos Médicos
+ * * Repository dos Médicos
  * ------------------------------------------------
- * * O repository é quem vai efetivamente acessar os dados do Banco de Dados
- * * Não tem acesso a requisição (req) ou a resposta (res), ele é completamente isolado e separado
- * * É ele que se preocupa em como é feito o acesso ao Banco de Dados, que tecnologia está usando, é o repository
- * * É aqui que seria a manutenção, pra trás dele (service, controller...) não muda nada
- * 
- * * Se eu quiser trabalhar com ORM, ferramentas que ajudam a criar e acessar o Banco de Dados, é no repository que é implementado
- * * Se eu quiser trabalhar com Query Builder, ferramentas que ajudam a escrever o comando SQL, é no repository que é implementado
- * * Se eu quiser trabalhar com comandos SQL nativos, é no repository que é implementado
- * 
- * * Ao guardar o comando SQL dentro de crases ao invés das aspas, é possível fazer quebra de linha
  */
 
 // Importando a função query do arquivo de configuração do SQLite

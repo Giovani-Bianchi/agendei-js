@@ -1,5 +1,5 @@
 /**
- * ? Controller dos Médicos
+ * * Controller dos Médicos
  * ------------------------------------------------
  */
 
@@ -9,9 +9,7 @@ import serviceDoctor from "../services/service.doctor.js";
 // * --------------------------------------------MÉTODOS-------------------------------------------
 
 /**
- * * Função de Listar Médicos Assícrona - Recebe os dados da req (requisição) e da res (resposta)
- * Ao chegar para a API a rota 'doctors', será executado o código dentro do callback da função de Listar do controllerDoctor, conforme o arquivo de rotas
- * O callback recebe o parâmetro 'req' que é a requisição e o  parâmetro 'res' que é a resposta 
+ * * Função de Listar Médicos Assíncrona
 */ 
 async function Listar(req, res) {
 
@@ -27,7 +25,7 @@ async function Listar(req, res) {
 }
 
 /**
- * * Função de Inserir Médicos Assícrona
+ * * Função de Inserir Médicos Assíncrona
  */
 async function Inserir(req, res) {
 
@@ -48,7 +46,7 @@ async function Inserir(req, res) {
 }
 
 /**
- * * Função de Editar Médico Assícrona
+ * * Função de Editar Médico Assíncrona
  */
 async function Editar(req, res) {
 
@@ -67,7 +65,7 @@ async function Editar(req, res) {
 }
 
 /**
- * * Função de Excluir Médico Assícrona
+ * * Função de Excluir Médico Assíncrona
  */
 async function Excluir(req, res) {
 
@@ -77,7 +75,7 @@ async function Excluir(req, res) {
     // Aguardando a função 'Excluir' do serviceDoctor
     const doctor = await serviceDoctor.Excluir(id_doctor);
 
-    // Enviando a resposta para o cliente com o status 200 (OK), foi excluido com sucesso
+    // Enviando a resposta para o cliente com o status 200 (OK), foi excluído com sucesso
     res.status(200).json(doctor);
 
 }
@@ -85,7 +83,7 @@ async function Excluir(req, res) {
 // Services
 
 /**
- * * Função de Listar Serviços do Médico Assícrona
+ * * Função de Listar Serviços do Médico Assíncrona
  */
 async function ListarServicos(req, res) {
 

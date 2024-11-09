@@ -1,15 +1,6 @@
 /**
- * ? Service dos Médicos
+ * * Service dos Médicos
  * ------------------------------------------------
- * * Na service não passamos os dados de requisição, não é o trabalho dela conhecer essa parte (req e res)
- * * A service recebe apenas os parâmetros que ela precisa para realizar a tarefa. Em uma função de Inserir por exemplo, os parâmetros seriam: name, specialty, etc.
- * * Assim, ela recebe o que precisa para funcionar por conta própria, independente de quem mandou essas informações, se veio de uma requisição, planilha, tanto faz
- * 
- * * O nome de disso é Injeção de Dependência - Tudo o que ela precisa para funcionar por conta própria
- * 
- * * Tornamos uma função assícrona e usamos o await quando a resposta pode demorar um tempo, como por exemplo demorar para fazer a conexão com o Banco de Dados, e então para não dar erro o assync irá esperar uma resposta para assim então fazer sua função. Só é possível usar o await em uma função assícrona
- * 
- * * É na service que criamos Regras de Negócio, como criptografia de senha validação de dados, etc.
  */
 
 // Importação do Repository
