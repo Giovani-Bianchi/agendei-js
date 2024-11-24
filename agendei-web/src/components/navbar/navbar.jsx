@@ -3,14 +3,14 @@
     ----------------------------------------------------------------------------------------------------------
 */
 
+// Importações do React Router Dom
+import { Link, useNavigate } from 'react-router-dom';
+
 // Importando os Styled Components do Componente de Navbar
 import { Logo } from './navbar.styles.js';
 
 // Importações das Imagens
 import logo from "../../assets/logo-white.png";
-
-// Importações do React Router Dom
-import { Link, useNavigate } from 'react-router-dom';
 
 // Importação da API com Axios
 import api from '../../constants/api.js';
