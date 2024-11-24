@@ -4,7 +4,7 @@
 */
 
 // Importando os Styled Components do Componente de Login
-import { Form, Logo, DoctorImage } from './login.js';
+import { Form, Logo, DoctorImage } from './login.styles.js';
 
 // Importando as imagens
 import logo from "../../assets/logo.png";

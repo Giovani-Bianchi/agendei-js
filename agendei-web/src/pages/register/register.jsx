@@ -4,7 +4,7 @@
 */
 
 // Importando os Styled Components do Componente de Register
-import { Form, Logo, DoctorImage } from './register.js';
+import { Form, Logo, DoctorImage } from './register.styles.js';
 
 // Importando as imagens
 import logo from "../../assets/logo.png";

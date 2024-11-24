@@ -4,7 +4,7 @@
 */
 
 // Importando os Styled Components do Componente de Appointments
-import { ThButtons } from './appointments.js';
+import { ThButtons } from './appointments.styles.js';
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
