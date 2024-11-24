@@ -3,8 +3,8 @@
     ----------------------------------------------------------------------------------------------------------
 */
 
-// Importando o CSS dos Appointments
-import './appointments.css';
+// Importando os Styled Components do Componente de Appointments
+import { ThButtons } from './appointments.js';
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
@@ -274,7 +274,7 @@ function Appointments() {
                         <th scope='col'>Serviço</th>
                         <th scope='col'>Data/Hora</th>
                         <th scope='col' className='text-end'>Valor</th>
-                        <th scope='col' className='col-buttons'></th>
+                        <ThButtons scope='col'></ThButtons>
                     </tr>
                 </thead>
 

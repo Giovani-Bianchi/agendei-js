@@ -3,8 +3,8 @@
     ----------------------------------------------------------------------------------------------------------
 */
 
-// Importando o CSS do Register
-import './register.css';
+// Importando os Styled Components do Componente de Register
+import { Form, Logo, DoctorImage } from './register.js';
 
 // Importando as imagens
 import logo from "../../assets/logo.png";
@@ -108,10 +108,10 @@ function Register() {
         {/* Seção de Registro */}
         <div className="col-sm-5 d-flex justify-content-center align-items-center text-center">
 
-            <form action="" className='form-signin'>
+            <Form action="">
 
                 {/* Logo do Agendei com Texto Inicial */}
-                <img src={logo} className='logo mb-4' alt="Logo do Agendei" />
+                <Logo src={logo} alt="Logo do Agendei" />
                 <h5 className='mb-5'>Crie sua conta agora mesmo.</h5>
 
                 {/* Título de Acesse sua conta */}
@@ -177,12 +177,12 @@ function Register() {
                     <Link to="/">Acessar agora.</Link>
                 </div>
 
-            </form>
+            </Form>
         </div>
 
         {/* Seção da Imagem */}
         <div className="col-sm-7">
-            <img src={fundo} className='background-login' alt="Fundo de Médico" />
+            <DoctorImage src={fundo} alt="Fundo de Médico" />
         </div>
 
     </div>

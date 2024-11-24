@@ -3,9 +3,6 @@
     ----------------------------------------------------------------------------------------------------------
 */
 
-// Importando o CSS da tela de Adicionar Agendamento
-import "./appointment-add.css";
-
 // Importações do React Router Dom
 import { Link, useNavigate, useParams } from "react-router-dom";
 

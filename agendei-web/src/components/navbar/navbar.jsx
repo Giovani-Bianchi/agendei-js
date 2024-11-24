@@ -3,8 +3,8 @@
     ----------------------------------------------------------------------------------------------------------
 */
 
-// Importando o CSS do Componente de Navbar
-import './navbar.css';
+// Importando os Styled Components do Componente de Navbar
+import { Logo } from './navbar.js';
 
 // Importações das Imagens
 import logo from "../../assets/logo-white.png";
@@ -42,7 +42,7 @@ function Navbar() {
 
             {/* Logo do Agendei */}
             <Link className='navbar-brand' to="/appointments">
-                <img src={logo} className='navbar-logo' alt="Logo do Agendei" />
+                <Logo src={logo} alt="Logo do Agendei" />
             </Link>
 
             {/* Botão da Navbar de Collapse */}

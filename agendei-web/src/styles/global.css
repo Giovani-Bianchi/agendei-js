@@ -21,24 +21,20 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Margem superior de toda página para evitar que o conteúdo das telas seja sobreposto pela Navbar */
 .mt-page {
-    /* Margem superior de toda página para evitar que o conteúdo das telas seja sobreposto pela Navbar */
     margin-top: 90px;
 }
 
+/* Estilos para a tag select em todo o projeto */
 select {
-    /* Sem bordas */
     border: 0px;
     outline: none;
 
-    /* Cor do fundo branca */
+    width: 100%;
     background-color: #fff;
 
-    /* Cursos pointer */
     cursor: pointer;
-
-    /* Largura de 100% */
-    width: 100%;
 }
 
 /* --------------------------------------------------------------------------------------------------------

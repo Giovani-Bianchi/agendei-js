@@ -3,8 +3,8 @@
     ----------------------------------------------------------------------------------------------------------
 */
 
-// Importando o CSS do Login
-import './login.css';
+// Importando os Styled Components do Componente de Login
+import { Form, Logo, DoctorImage } from './login.js';
 
 // Importando as imagens
 import logo from "../../assets/logo.png";
@@ -108,10 +108,10 @@ function Login() {
         {/* Seção de Login */}
         <div className="col-sm-5 d-flex justify-content-center align-items-center text-center">
 
-            <form action="" className='form-signin'>
+            <Form action="">
 
                 {/* Logo do Agendei com Texto Inicial */}
-                <img src={logo} className='logo mb-4' alt="Logo do Agendei" />
+                <Logo src={logo} alt="Logo do Agendei" />
                 <h5 className='mb-5'>Gerencie seus agendamentos de forma descomplicada.</h5>
 
                 {/* Título de Acesse sua conta */}
@@ -162,12 +162,12 @@ function Login() {
                     <Link to="/register">Criar conta agora.</Link>
                 </div>
 
-            </form>
+            </Form>
         </div>
 
         {/* Seção da Imagem */}
         <div className="col-sm-7">
-            <img src={fundo} className='background-login' alt="Fundo de Médico" />
+            <DoctorImage src={fundo} alt="Fundo de Médico" />
         </div>
 
     </div>
