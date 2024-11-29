@@ -41,6 +41,23 @@ async function Listar(name) {
 }
 
 /**
+ * * Função de Exibir os Dados do Médico Assíncrona
+*/ 
+async function ListarId(id_doctor) {
+
+    // Comando SQL para capturar os dados do médico
+    // Lista pra mim todos os campos dessas tabela onde o id_doctor for igual ao parâmetro que será passado com base no botão de editar clicado da tabela
+    let sql = "select * from doctors where id_doctor = ?";
+
+    // Constante de dados do médico que tem como parâmetro o id_doctor que preenche o ? na consulta SQL
+    const doctor = await query(sql, [id_doctor]);
+
+    // Retornando os dados do médico, pegando só o primeiro item do array pois só existe um item, a médico do id indicado pelo id_doctor
+    return doctor[0];
+
+}
+
+/**
  * * Função de Filtrar Médicos Assíncrona
 */ 
 async function Filtrar(id_doctor) {
@@ -147,4 +164,4 @@ async function ListarServicos(id_doctor) {
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do repository.doctor
-export default { Listar, Filtrar, Inserir, Editar, Excluir, ListarServicos }
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos }

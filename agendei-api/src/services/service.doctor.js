@@ -22,6 +22,19 @@ async function Listar(name) {
 }
 
 /**
+ * * Função de Exibir os Dados do Médico Assíncrona
+*/ 
+async function ListarId(id_doctor) {
+
+    // Aguardando a função 'ListarId' do repoDoctor
+    const doctor = await repoDoctor.ListarId(id_doctor);
+
+    // Retornando os dados do médico
+    return doctor;
+
+}
+
+/**
  * * Função de Filtrar Médicos Assíncrona
 */ 
 async function Filtrar(id_doctor) {
@@ -91,4 +104,4 @@ async function ListarServicos(id_doctor) {
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções da service.doctor
-export default { Listar, Filtrar, Inserir, Editar, Excluir, ListarServicos };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos };

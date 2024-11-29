@@ -94,6 +94,9 @@ router.get('/admin/appointments/:id_appointment', jwt.ValidateToken, controllerA
 // Criando uma rota por PUT para editar os dados da reserva com base no id. É necessário primeiramente validar o Token para permitir a edição da reserva, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Editar'
 router.put('/admin/appointments/:id_appointment', jwt.ValidateToken, controllerAppointment.EditarAdmin);
 
+// Criando uma rota por GET para exibir os dados na tela de edição referente àquele médico para a edição posteriormente. É necessário primeiramente validar o Token para permitir o acesso aos dados do médico para o Admin, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'ListarId'
+router.get('/admin/doctors/:id_doctor', jwt.ValidateToken, controllerDoctor.ListarId);
+
 // ------------------------------------------------------------------------------------------------
 
 // * Exportando o Router

@@ -7,13 +7,13 @@
 import api from "../../constants/api.js";
 
 /* --------------------------------------------------------------------------------------------------------
- * Função de clickEdit - Passamos o id_appointment para identificar qual agendamento está querendo editar, isso está vinculado ao clique do botão de Editar
+ * Função de clickEdit - Passamos o id_doctor para identificar qual médico está querendo editar, isso está vinculado ao clique do botão de Editar
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clickEdit = (id_appointment, navigate) => {
+export const clickEdit = (id_doctor, navigate) => {
 
-    // Levando o usuário para a tela de edição passando o ID do appointment
-    navigate("/appointments/edit/" + id_appointment)
+    // Levando o usuário para a tela de edição passando o ID do doctor
+    navigate("/doctors/edit/" + id_doctor)
 
 }
 
