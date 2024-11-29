@@ -32,6 +32,9 @@ function DoctorAdd() {
     // Variável de estado para armazenar o gênero do médio
     const [gender, setGender] = useState("");
 
+    // Função para verificar se todos os campos estão preenchidos
+    const isFormValid = doctor.trim() !== "" && service.trim() !== "" && gender !== "";
+
     // Carrega os dados do médico sempre que o componente for montado (caso seja passado um id)
     useEffect(() => {
         loadDoctor(id_doctor, setDoctor, setService, setGender, navigate)
@@ -96,7 +99,7 @@ function DoctorAdd() {
                 <div className="col-12 mt-4">
                     <div className="d-flex justify-content-end gap-2">
                         <Link to="/doctors" className="btn btn-outline-primary">Cancelar</Link>
-                        <button type="button" className="btn btn-primary" onClick={() => saveDoctor(id_doctor, doctor, service, gender, navigate)}>Salvar Dados</button>
+                        <button type="button" className="btn btn-primary" disabled={!isFormValid} onClick={() => saveDoctor(id_doctor, doctor, service, gender, navigate)}>Salvar Dados</button>
                     </div>
                 </div>
 

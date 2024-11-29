@@ -39,6 +39,14 @@ function AppointmentAdd() {
     const [bookingDate, setBookingDate] = useState("");
     const [bookingHour, setBookingHour] = useState("");
 
+    // Função para verificar se todos os campos estão preenchidos
+    const isFormValid =
+        idUser !== "" && idUser !== "0" &&
+        idDoctor !== "" && idDoctor !== "0" &&
+        idService !== "" && idService !== "0" &&
+        bookingDate !== "" && 
+        bookingHour !== "";
+
     // Faz uma função toda vez que o componente for montado, carregando a lista de pacientes e médicos
     useEffect(() => {
         loadUsers(setUsers, navigate);
@@ -71,7 +79,12 @@ function AppointmentAdd() {
                     <label htmlFor="user" className="form-label">Paciente</label>
                     <div className='form-control mb-2'>
                         <select name='user' id='user' value={idUser} onChange={(e) => setIdUser(e.target.value)}>
-                            <option value='0'>Selecione o paciente</option>
+                            {/* Se a variável idUser for vazia, mostra a opção de Selecione o paciente, senão, não mostra */}
+                            {idUser === "" && (
+                                <option value="" disabled hidden>
+                                    Selecione o paciente
+                                </option>
+                            )}
 
                             {/* Opções do Select  */}
                             {   
@@ -89,7 +102,12 @@ function AppointmentAdd() {
                     <label htmlFor="doctor" className="form-label">Médico</label>
                     <div className='form-control mb-2'>
                         <select name='doctor' id='doctor' value={idDoctor} onChange={(e) => setIdDoctor(e.target.value)}>
-                            <option value='0'>Selecione o médico</option>
+                            {/* Se a variável idDoctor for vazia, mostra a opção de Selecione o médico, senão, não mostra */}
+                            {idDoctor === "" && (
+                                <option value="" disabled hidden>
+                                    Selecione o médico
+                                </option>
+                            )}
 
                             {/* Opções do Select  */}
                             {   
@@ -107,7 +125,12 @@ function AppointmentAdd() {
                     <label htmlFor="service" className="form-label">Serviço</label>
                     <div className='form-control mb-2'>
                         <select name='service' id='service' value={idService} onChange={(e) => setIdService(e.target.value)}>
-                            <option value='0'>Selecione o serviço</option>
+                            {/* Se a variável idService for vazia, mostra a opção de Selecione o serviço, senão, não mostra */}
+                            {idService === "" && (
+                                <option value="" disabled hidden>
+                                    Selecione o serviço
+                                </option>
+                            )}
 
                             {/* Opções do Select  */}
                             {   
@@ -130,7 +153,12 @@ function AppointmentAdd() {
                     <label htmlFor="bookingHour" className="form-label">Horário</label>
                     <div className="form-control mb-2">
                         <select name="bookingHour" id="bookingHour" value={bookingHour} onChange={(e) => setBookingHour(e.target.value)}>
-                            <option value="00:00">Horário</option>
+                            {/* Se a variável bookingHour for vazia, mostra a opção de Horário, senão, não mostra */}
+                            {bookingHour === "" && (
+                                <option value="" disabled hidden>
+                                    Horário
+                                </option>
+                            )}
                             <option value="09:00">9:00</option>
                             <option value="09:30">9:30</option>
                             <option value="10:00">10:00</option>
@@ -144,7 +172,7 @@ function AppointmentAdd() {
                 <div className="col-12 mt-4">
                     <div className="d-flex justify-content-end gap-2">
                         <Link to="/appointments" className="btn btn-outline-primary">Cancelar</Link>
-                        <button type="button" className="btn btn-primary" onClick={() => saveAppointment(idUser, idDoctor, idService, bookingDate, bookingHour, id_appointment, navigate)}>Salvar Dados</button>
+                        <button type="button" className="btn btn-primary" disabled={!isFormValid} onClick={() => saveAppointment(idUser, idDoctor, idService, bookingDate, bookingHour, id_appointment, navigate)}>Salvar Dados</button>
                     </div>
                 </div>
 
