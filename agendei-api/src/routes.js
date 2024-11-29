@@ -26,6 +26,9 @@ const router = Router();
 // Criando uma rota por GET para servir a lista de médicos. É necessário primeiramente validar o Token para permitir o acesso a lista de médicos, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Listar'
 router.get('/doctors', jwt.ValidateToken, controllerDoctor.Listar);
 
+// Criando uma rota por GET para servir a lista de médicos. É necessário primeiramente validar o Token para permitir o acesso a lista de médicos, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Listar'
+router.get('/doctors/filter', jwt.ValidateToken, controllerDoctor.Filtrar);
+
 // Criando uma rota por POST para criar um novo médico. É necessário primeiramente validar o Token para permitir o acesso a inserção de médicos, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Inserir'
 router.post('/doctors', jwt.ValidateToken, controllerDoctor.Inserir);
 

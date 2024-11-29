@@ -1,5 +1,5 @@
 /*
-    * Tela de Agendamentos
+    * Tela de Doctors
     ----------------------------------------------------------------------------------------------------------
 */
 
@@ -14,41 +14,35 @@ import { confirmAlert } from 'react-confirm-alert';
 // CSS do react-confirm-alert
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-// Importando as funções de Appointments
-import { clickEdit, clickDelete, loadDoctors, loadAppointments, changeDoctor, clearInputs } from './appointments.functions.js';
+// Importando as funções de Doctors
+import { clickEdit, clickDelete, loadDoctors, filterDoctors, changeDoctor, clearInput } from './doctors.functions.js';
 
-// Importando os Styled Components do Componente de Appointments
-import { ThButtons } from './appointments.styles.js';
+// Importando os Styled Components do Componente de Doctors
+import { ThButtons } from './doctors.styles.js';
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
-import Appointment from '../../components/appointment/appointment.jsx';
+import Doctor from '../../components/doctor/doctor.jsx';
 
-function Appointments() {
+function Doctors() {
 
     // Instanciando o navigate
     const navigate = useNavigate();
 
-    // Variável de estado para que toda vez que ela seja alterada, a página seja recarregada para listar os appointments
-    const [appointments, setAppointments] = useState([]);
-
     // Variável de estado para listar os médicos cadastrados no BD vindos da API
     const [doctors, setDoctors] = useState([]);
+
+    // Variável de estado para filtrar os médicos cadastrados no BD vindos da API
+    const [filtroDoctors, setFiltroDoctors] = useState([]);
     
     // Variável de estado para armazenar o id do médico selecionado, começa com o valor de nulo sendo uma string
     const [idDoctor, setIdDoctor] = useState("");
 
-    // Variável de estado para armazenar a data inicial
-    const [dtStart, setDtStart] = useState("");
-
-    // Variável de estado para armazenar a data final
-    const [dtEnd, setDtEnd] = useState("");
-
-    // Lista todos os appointments e doctors quando o idDoctor, dtStart e dtEnd forem alterados
+    // Lista todos os doctors e os doctors filtrados quando o idDoctor é alterado
     useEffect(() => {
         loadDoctors(setDoctors, navigate);
-        loadAppointments(idDoctor, dtStart, dtEnd, setAppointments, navigate);
-    }, [idDoctor, dtStart, dtEnd])
+        filterDoctors(idDoctor, setFiltroDoctors, navigate);
+    }, [idDoctor])
 
     return <div className='container-fluid mt-page p-4'>
     
@@ -58,19 +52,14 @@ function Appointments() {
         {/* Seção de Filtros */}
         <div className="d-flex justify-content-between align-itens-center">
 
-            {/* Título com Botão de Novo Agendamento */}
+            {/* Título com Botão de Novo Médico */}
             <div className='mb-4'>
-                <h2 className='d-inline'>Agendamentos</h2>
-                <Link to="/appointments/add" className='btn btn-outline-primary ms-4 mb-2'>Novo Agendamento</Link>
+                <h2 className='d-inline'>Médicos</h2>
+                <Link to="/doctors/add" className='btn btn-outline-primary ms-4 mb-2'>Novo Médico</Link>
             </div>
 
-            {/* Filtros dos Agendamentos e Botão Filtrar */}
+            {/* Filtros dos Médicos e Botão Filtrar */}
             <div className='d-flex align-items-center mb-4'>
-
-                {/* Inputs de Data */}
-                <input type="date" id='startDate' className='form-control' onChange={(e) => setDtStart(e.target.value)} /> {/* Captura o valor e atribui a variável dtStart */}
-                <span className='mx-2'>Até</span>
-                <input type="date" id='endDate' className='form-control' onChange={(e) => setDtEnd(e.target.value)} /> {/* Captura o valor e atribui a variável dtEnd */}
 
                 {/* Select para escolher o Médico */}
                 <div className='form-control mx-3'>
@@ -89,24 +78,20 @@ function Appointments() {
                 </div>
 
                 {/* Botão de Limpar */}
-                <button type='button' className='btn btn-primary' onClick={() => clearInputs(setIdDoctor, setDtStart, setDtEnd)}>Limpar</button>
+                <button type='button' className='btn btn-primary' onClick={() => clearInput(setIdDoctor)}>Limpar</button>
 
             </div>
 
         </div>
 
-        {/* Tabela de Agendamentos CRUD */}
+        {/* Tabela de Médicos CRUD */}
         <div>
             <table className='table table-hover'>  
 
                 {/* Cabeçalho da Tabela */}
                 <thead>
                     <tr>
-                        <th scope='col'>Paciente</th>
                         <th scope='col'>Médico</th>
-                        <th scope='col'>Serviço</th>
-                        <th scope='col'>Data/Hora</th>
-                        <th scope='col' className='text-end'>Valor</th>
                         <ThButtons scope='col'></ThButtons>
                     </tr>
                 </thead>
@@ -114,20 +99,15 @@ function Appointments() {
                 {/* Corpo da Tabela - Loop carregando várias vezes o componente */}
                 <tbody>
                     {
-                        appointments.map((ap) => {
-                            return <Appointment key={ap.id_appointment}
-                                // Passando as props do appointment
-                                id_appointment={ap.id_appointment}
-                                user={ap.user}
-                                doctor={ap.doctor}
-                                service={ap.service}
-                                booking_date={ap.booking_date}
-                                booking_hour={ap.booking_hour}
-                                price={ap.price}
+                        filtroDoctors.map((doc) => {
+                            return <Doctor key={doc.id_doctor}
+                                // Passando as props do doctor
+                                id_doctor={doc.id_doctor}
+                                doctor={doc.name}
 
                                 // Passando as props para os botões de ação, com funções de clique
-                                clickEdit={() => clickEdit(ap.id_appointment, navigate)}
-                                clickDelete={() => clickDelete(ap.id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate)}
+                                clickEdit={() => clickEdit(doc.id_doctor, navigate)}
+                                clickDelete={() => clickDelete(doc.id_doctor, confirmAlert, navigate)}
                             />
                         })
                     }
@@ -140,5 +120,5 @@ function Appointments() {
 
 }
 
-// Exportando o componente de appointments
-export default Appointments;
+// Exportando o componente de Doctors
+export default Doctors;

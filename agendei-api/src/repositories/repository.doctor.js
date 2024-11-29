@@ -41,6 +41,35 @@ async function Listar(name) {
 }
 
 /**
+ * * Função de Filtrar Médicos Assíncrona
+*/ 
+async function Filtrar(id_doctor) {
+
+    // Variável para o filtro
+    let filtro = [];
+
+    // Comando SQL para listar os médicos, se houver um id sendo recebido, adiciona o filtro
+    let sql = "select * from doctors ";
+
+    // Se existir o parâmetro id_doctor, adiciona o filtro
+    if (id_doctor) {
+        // Filtro a partir do id_doctor
+        sql = sql + "where id_doctor = ?"
+
+        // Insere o elemento no array
+        filtro.push(id_doctor);
+    }
+
+    // Constante de doctors que espera a resposta da query passando como primeiro parâmetro o comando e como segundo os parâmetros extras, que nesse caso é o filtro
+    // Por ser uma Promise, temos que usar o await para esperar a consulta ser finalizada para assim então retornar os dados para a const doctors
+    const doctors = await query(sql, filtro);
+
+    // Retornando a lista de médicos
+    return doctors;
+
+}
+
+/**
  * * Função de Inserir Médico Assíncrona
 */ 
 async function Inserir(name, specialty, icon) {
@@ -118,4 +147,4 @@ async function ListarServicos(id_doctor) {
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do repository.doctor
-export default { Listar, Inserir, Editar, Excluir, ListarServicos }
+export default { Listar, Filtrar, Inserir, Editar, Excluir, ListarServicos }

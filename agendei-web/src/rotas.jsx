@@ -11,6 +11,7 @@ import Login from "./pages/login/login.jsx";
 import Register from "./pages/register/register.jsx";
 import Appointments from "./pages/appointments/appointments.jsx";
 import AppointmentAdd from "./pages/appointment-add/appointment-add.jsx";
+import Doctors from "./pages/doctors/doctors.jsx";
 
 function Rotas() {
 
@@ -18,11 +19,15 @@ function Rotas() {
     return <BrowserRouter>
         <Routes>
 
+            {/* ------------------------------------------------- Auth --------------------------------------------------- */}
+
             {/* Rota - Tela de Login */}
             <Route path="/" element={<Login />} />
 
             {/* Rota - Tela de Register */}
             <Route path="/register" element={<Register />} />
+
+            {/* ---------------------------------------------- Appointments ---------------------------------------------- */}
 
             {/* Rota - Tela de Appointments */}
             <Route path="/appointments" element={<Appointments />} />
@@ -32,6 +37,11 @@ function Rotas() {
 
             {/* Rota - Tela de Editar Appointment */}
             <Route path="/appointments/edit/:id_appointment" element={<AppointmentAdd />} />
+
+            {/* ------------------------------------------------- Doctors ------------------------------------------------- */}
+
+            {/* Rota - Tela de Doctors */}
+            <Route path="/doctors" element={<Doctors />} />
 
         </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 /*
-    * Arquivo de Funções do Componente de Appointments
+    * Arquivo de Funções do Componente de Doctors
     ----------------------------------------------------------------------------------------------------------
 */
 
@@ -132,28 +132,25 @@ export const loadDoctors = async (setDoctors, navigate) => {
 }
 
 /* --------------------------------------------------------------------------------------------------------
- * Função de loadAppointments
+ * Função de filterDoctors
 ---------------------------------------------------------------------------------------------------------- */
 
-export const loadAppointments = async (idDoctor, dtStart, dtEnd, setAppointments, navigate) => {
+export const filterDoctors = async (idDoctor, setFiltroDoctors, navigate) => {
 
     // Tentar executar a requisição GET
     try {
             
-        // Criando a requisição de Appointments para a API usando o método GET
-        const response = await api.get("/admin/appointments", {
-            // É aqui que insere os parâmetros que serão enviados para a API para fazer o filtro
+        // Criando a requisição de doctors para a API usando o método GET
+        const response = await api.get("/doctors/filter", {
             params: {
-                id_doctor: idDoctor,
-                dt_start: dtStart,
-                dt_end: dtEnd
+                id_doctor: idDoctor
             }
         });
 
         // Se obteve os dados de retorno da API
         if (response.data) {
             // Atualizando o estado com os dados retornados da API, é feito o map() mais abaixo para posicionar os dados conforme o layout
-            setAppointments(response.data);
+            setFiltroDoctors(response.data);
         }
 
     }
@@ -173,7 +170,7 @@ export const loadAppointments = async (idDoctor, dtStart, dtEnd, setAppointments
 
         // Se não conseguiu obter qual é o erro vindo do servidor, então exibe a mensagem de erro padrão
         else {
-            alert("Erro ao carregar agendamentos. Tente novamente mais tarde.");
+            alert("Erro ao filtrar médicos. Tente novamente mais tarde.");
         }
 
     }
@@ -192,22 +189,12 @@ export const changeDoctor = (e, setIdDoctor) => {
 }
 
 /* --------------------------------------------------------------------------------------------------------
- * Função de clearInputs
+ * Função de clearInput
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clearInputs = (setIdDoctor, setDtStart, setDtEnd) => {
+export const clearInput = (setIdDoctor) => {
 
-    // Limpa os inputs, retornando ao seu valor padrão
+    // Limpa o select, retornando ao seu valor padrão de "Todos os médicos"
     setIdDoctor("");
-    setDtStart("");
-    setDtEnd("");
-
-    // Seleciona os inputs de data
-    const dtStart = document.getElementById('startDate');
-    const dtEnd = document.getElementById('endDate');
-
-    // Limpa os valores dos inputs
-    dtStart.value = "";
-    dtEnd.value = "";
 
 }

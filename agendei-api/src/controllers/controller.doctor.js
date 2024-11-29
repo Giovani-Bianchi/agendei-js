@@ -25,6 +25,22 @@ async function Listar(req, res) {
 }
 
 /**
+ * * Função de Filtrar Médicos Assíncrona
+*/ 
+async function Filtrar(req, res) {
+
+    // Acessando o parâmetro de id do médico
+    const id_doctor = req.query.id_doctor;
+
+    // Aguardando a função 'Filtrar' do serviceDoctor
+    const doctors = await serviceDoctor.Filtrar(id_doctor);
+
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados
+    res.status(200).json(doctors);
+
+}
+
+/**
  * * Função de Inserir Médicos Assíncrona
  */
 async function Inserir(req, res) {
@@ -101,4 +117,4 @@ async function ListarServicos(req, res) {
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do controller.doctor
-export default { Listar, Inserir, Editar, Excluir, ListarServicos };
+export default { Listar, Filtrar, Inserir, Editar, Excluir, ListarServicos };
