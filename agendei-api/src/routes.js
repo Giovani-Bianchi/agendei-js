@@ -80,6 +80,12 @@ router.get('/services', jwt.ValidateToken, controllerDService.Listar);
 // Criando uma rota por GET para servir a lista de serviços. É necessário primeiramente validar o Token para permitir o acesso a lista de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Filtrar'
 router.get('/services/filter', jwt.ValidateToken, controllerDService.Filtrar);
 
+// Criando uma rota por POST para criar um novo serviço. É necessário primeiramente validar o Token para permitir o acesso a inserção de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Inserir'
+router.post('/services', jwt.ValidateToken, controllerDService.Inserir);
+
+// Criando uma rota por PUT para editar um serviço, passando o id do serviço para a URL (id_service). É necessário primeiramente validar o Token para permitir o acesso a edição de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Editar'
+router.put('/services/:id_service', jwt.ValidateToken, controllerDService.Editar);
+
 // ------------------------------------------------------------------------------------------------
 
 //  --------------------------------------ROTAS ADMIN----------------------------------------------
@@ -107,6 +113,9 @@ router.put('/admin/appointments/:id_appointment', jwt.ValidateToken, controllerA
 
 // Criando uma rota por GET para exibir os dados na tela de edição referente àquele médico para a edição posteriormente. É necessário primeiramente validar o Token para permitir o acesso aos dados do médico para o Admin, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'ListarId'
 router.get('/admin/doctors/:id_doctor', jwt.ValidateToken, controllerDoctor.ListarId);
+
+// Criando uma rota por GET para exibir os dados na tela de edição referente àquele serviço para a edição posteriormente. É necessário primeiramente validar o Token para permitir o acesso aos dados do serviço para o Admin, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'ListarId'
+router.get('/admin/services/:id_service', jwt.ValidateToken, controllerDService.ListarId);
 
 // ------------------------------------------------------------------------------------------------
 

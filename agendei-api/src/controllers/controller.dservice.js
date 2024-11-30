@@ -22,6 +22,22 @@ async function Listar(req, res) {
 }
 
 /**
+ * * Função de Exibir os Dados do Serviço Assíncrona
+*/ 
+async function ListarId(req, res) {
+
+    // Acessando o parâmetro id_service pelos parâmetros da requisição, vindo do Token
+    const id_service = req.params.id_service;
+
+    // Aguardando a função 'ListarId' do serviceDService
+    const service = await serviceDService.ListarId(id_service);
+
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados
+    res.status(200).json(service);
+
+}
+
+/**
  * * Função de Filtrar Serviços Assíncrona
 */ 
 async function Filtrar(req, res) {
@@ -37,5 +53,40 @@ async function Filtrar(req, res) {
 
 }
 
+/**
+ * * Função de Inserir Serviços Assíncrona
+ */
+async function Inserir(req, res) {
+
+    // Acessando os dados do corpo da requisição e desestruturando eles para cada variável
+    const { description } = req.body;
+
+    // Aguardando a função 'Inserir' do serviceDService
+    const service = await serviceDService.Inserir(description);
+
+    // Enviando a resposta para o cliente com o status 201 (Created) e o JSON contendo os dados que foram inseridos do serviço
+    res.status(201).json(service);
+
+}
+
+/**
+ * * Função de Editar Serviço Assíncrona
+ */
+async function Editar(req, res) {
+
+    // Extraindo o id_service da requisição pelo params, para saber qual serviço deve-se editar
+    const id_service = req.params.id_service;
+
+    // Constante para desestruturar os dados vindos do corpo da requisição, os novos dados nos quais serão usados para editar o serviço
+    const {description} = req.body;
+
+    // Aguardando a função 'Editar' do serviceDService
+    const service = await serviceDService.Editar(id_service, description);
+
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados que foram editados do serviço
+    res.status(200).json(service);
+
+}
+
 // Exportando as funções do controller.dservice
-export default { Listar, Filtrar }
+export default { Listar, ListarId, Filtrar, Inserir, Editar }

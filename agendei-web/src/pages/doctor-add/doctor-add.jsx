@@ -49,7 +49,7 @@ function DoctorAdd() {
         <div className='container-fluid mt-page'>
             <div className="row col-lg-4 offset-lg-4">
 
-                {/* Título de Nova Médico */}
+                {/* Título de Novo Médico */}
                 <div className="col-12 mt-2">
                     {/* Se o id_doctor foi maior que 0, significa que é edição, então coloca o título "Editar Médico", senão, coloca "Nova Médico", que é criação */}
                     <h2>{id_doctor > 0 ? "Editar Médico" : "Novo Médico"}</h2>

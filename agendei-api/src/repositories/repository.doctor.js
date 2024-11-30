@@ -77,6 +77,9 @@ async function Filtrar(id_doctor) {
         filtro.push(id_doctor);
     }
 
+    // Ordenar por nome
+    sql = sql + "order by name";
+
     // Constante de doctors que espera a resposta da query passando como primeiro parâmetro o comando e como segundo os parâmetros extras, que nesse caso é o filtro
     // Por ser uma Promise, temos que usar o await para esperar a consulta ser finalizada para assim então retornar os dados para a const doctors
     const doctors = await query(sql, filtro);

@@ -7,6 +7,17 @@
 import api from "../../constants/api.js";
 
 /* --------------------------------------------------------------------------------------------------------
+ * Função de clickEdit - Passamos o id_service para identificar qual serviço está querendo editar, isso está vinculado ao clique do botão de Editar
+---------------------------------------------------------------------------------------------------------- */
+
+export const clickEdit = (id_service, navigate) => {
+
+    // Levando o usuário para a tela de edição passando o ID do service
+    navigate("/services/edit/" + id_service)
+
+}
+
+/* --------------------------------------------------------------------------------------------------------
  * Função de loadServices
 ---------------------------------------------------------------------------------------------------------- */
 
