@@ -141,6 +141,26 @@ export const appointments = [
 
 ]
 
+// Lista dos serviços
+export const services = [
+    
+    {
+        id_service: 1,
+        description: "Consulta"
+    },
+
+    {
+        id_service: 1,
+        description: "Endoscopia"
+    },
+
+    {
+        id_service: 1,
+        description: "Bariátrica"
+    }
+
+]
+
 // Lista dos serviços dos médicos
 export const doctors_services = [
 

@@ -67,6 +67,11 @@ function Navbar() {
                     <li className="nav-item">
                         <Link className={`nav-link ${location.pathname === "/doctors" ? "active" : ""}`} to="/doctors">Médicos</Link>
                     </li>
+
+                    {/* Link para a Pagina de Serviços */}
+                    <li className="nav-item">
+                        <Link className={`nav-link ${location.pathname === "/services" ? "active" : ""}`} to="/services">Serviços</Link>
+                    </li>
                 </ul>
 
                 {/* Lista de Dropdown */}
