@@ -15,6 +15,7 @@ import jwt from "./token.js";
 import controllerDoctor from "./controllers/controller.doctor.js";
 import controllerUser from "./controllers/controller.user.js";
 import controllerAppointment from "./controllers/controller.appointment.js";
+import controllerDService from "./controllers/controller.dservice.js";
 
 // * Instanciando o Router
 const router = Router();
