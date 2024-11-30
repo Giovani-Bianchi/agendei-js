@@ -18,22 +18,22 @@ export const clickEdit = (id_doctor, navigate) => {
 }
 
 /* --------------------------------------------------------------------------------------------------------
- * Função de clickDelete - Passamos o id_appointment para identificar qual agendamento está querendo excluir, isso está vinculado ao clique do botão de Excluir
+ * Função de clickDelete - Passamos o id_doctor para identificar qual médico está querendo excluir, isso está vinculado ao clique do botão de Excluir
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clickDelete = (id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate) => {
+export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {
 
-    // Alert de confirmação para a exclusão do agendamento
+    // Alert de confirmação para a exclusão do médico
     confirmAlert({
         title: 'Exclusão',
-        message: 'Você tem certeza que deseja excluir esse agendamento?',
+        message: 'Você tem certeza que deseja excluir esse médico?',
         buttons: [
             // Botão de confirmar
             {
                 label: 'Sim',
                 onClick: () => {
-                    // Chamando a API para excluir o agendamento
-                    deleteAppointment(id_appointment, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate);
+                    // Chamando a API para excluir o médico
+                    deleteDoctor(id_doctor, idDoctor, setFiltroDoctors, filterDoctors, navigate);
                 }
             },
 
@@ -52,17 +52,17 @@ export const clickDelete = (id_appointment, confirmAlert, idDoctor, dtStart, dtE
  * Função de deleteAppointment
 ---------------------------------------------------------------------------------------------------------- */
 
-const deleteAppointment = async (id, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate) => {
+const deleteDoctor = async (id_doctor, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {
 
     // Tentar executar a requisição DELETE
     try {
             
-        // Criando a requisição de appointments para a API usando o método DELETE
-        const response = await api.delete("/appointments/" + id);
+        // Criando a requisição de doctors para a API usando o método DELETE
+        const response = await api.delete("/doctors/" + id_doctor);
 
-        // Se o agendamento foi excluído, recarrega os agendamentos de novo
+        // Se o médico foi excluído, recarrega os médicos de novo
         if (response.data) {
-            loadAppointments(idDoctor, dtStart, dtEnd, setAppointments, navigate);
+            filterDoctors(idDoctor, setFiltroDoctors, navigate);
         }
 
     }

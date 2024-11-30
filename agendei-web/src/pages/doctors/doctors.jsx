@@ -107,7 +107,7 @@ function Doctors() {
 
                                 // Passando as props para os botões de ação, com funções de clique
                                 clickEdit={() => clickEdit(doc.id_doctor, navigate)}
-                                clickDelete={() => clickDelete(doc.id_doctor, confirmAlert, navigate)}
+                                clickDelete={() => clickDelete(doc.id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate)}
                             />
                         })
                     }
