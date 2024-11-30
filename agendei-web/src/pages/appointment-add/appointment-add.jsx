@@ -47,6 +47,9 @@ function AppointmentAdd() {
         bookingDate !== "" && 
         bookingHour !== "";
 
+    // Função para verificar se o médico já foi escolhido, caso sim, permite a escolha do serviço
+    const isDoctorChosen = idDoctor !== "" && idDoctor !== "0";
+
     // Faz uma função toda vez que o componente for montado, carregando a lista de pacientes e médicos
     useEffect(() => {
         loadUsers(setUsers, navigate);
@@ -124,7 +127,7 @@ function AppointmentAdd() {
                 <div className="col-12 mt-3">
                     <label htmlFor="service" className="form-label">Serviço</label>
                     <div className='form-control mb-2'>
-                        <select name='service' id='service' value={idService} onChange={(e) => setIdService(e.target.value)}>
+                        <select name='service' id='service' disabled={!isDoctorChosen} value={idService} onChange={(e) => setIdService(e.target.value)}>
                             {/* Se a variável idService for vazia, mostra a opção de Selecione o serviço, senão, não mostra */}
                             {idService === "" && (
                                 <option value="" disabled hidden>
