@@ -26,18 +26,18 @@ function DoctorAdd() {
     // Variável de estado para armazenar o nome do médico
     const [doctor, setDoctor] = useState("");
 
-    // Variável de estado para armazenar o serviço prestado pelo médico
-    const [service, setService] = useState("");
+    // Variável de estado para armazenar a especialidade do médico
+    const [specialty, setSpecialty] = useState("");
 
     // Variável de estado para armazenar o gênero do médio
     const [gender, setGender] = useState("");
 
     // Função para verificar se todos os campos estão preenchidos
-    const isFormValid = doctor.trim() !== "" && service.trim() !== "" && gender !== "";
+    const isFormValid = doctor.trim() !== "" && specialty.trim() !== "" && gender !== "";
 
     // Carrega os dados do médico sempre que o componente for montado (caso seja passado um id)
     useEffect(() => {
-        loadDoctor(id_doctor, setDoctor, setService, setGender, navigate)
+        loadDoctor(id_doctor, setDoctor, setSpecialty, setGender, navigate)
     }, []);
 
     return <>
@@ -66,10 +66,10 @@ function DoctorAdd() {
 
                 {/* Input de especialidade do médico */}
                 <div className="col-12 mt-3">
-                    <label className="form-label">Serviço</label>
+                    <label className="form-label">Especialidade</label>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" placeholder="Serviço do médico" value={service} onChange={(e) => setService(e.target.value)} />
-                        <label htmlFor="service">Serviço do médico</label>
+                        <input type="text" className="form-control" placeholder="Especialidade do médico" value={specialty} onChange={(e) => setSpecialty(e.target.value)} />
+                        <label htmlFor="specialty">Especialidade do médico</label>
                     </div>
                 </div>
 
@@ -99,7 +99,7 @@ function DoctorAdd() {
                 <div className="col-12 mt-4">
                     <div className="d-flex justify-content-end gap-2">
                         <Link to="/doctors" className="btn btn-outline-primary">Cancelar</Link>
-                        <button type="button" className="btn btn-primary" disabled={!isFormValid} onClick={() => saveDoctor(id_doctor, doctor, service, gender, navigate)}>Salvar Dados</button>
+                        <button type="button" className="btn btn-primary" disabled={!isFormValid} onClick={() => saveDoctor(id_doctor, doctor, specialty, gender, navigate)}>Salvar Dados</button>
                     </div>
                 </div>
 

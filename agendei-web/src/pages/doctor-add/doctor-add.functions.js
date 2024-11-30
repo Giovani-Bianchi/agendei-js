@@ -10,12 +10,12 @@ import api from "../../constants/api.js";
  * Função para salvar/editar o médico
 ---------------------------------------------------------------------------------------------------------- */
 
-export const saveDoctor = async (id_doctor, doctor, service, gender, navigate) => {
+export const saveDoctor = async (id_doctor, doctor, specialty, gender, navigate) => {
         
     // Objeto json para armazenar os dados do médico para o salvamento, nomeando a qual campo cada variável pertence quando fizer o POST. Estamos puxando os valores das nossas variáveis de estado conforme o que o usuário escolheu
     const json = {
         name: doctor,
-        specialty: service,
+        specialty: specialty,
         icon: gender
     }
 
@@ -60,7 +60,7 @@ export const saveDoctor = async (id_doctor, doctor, service, gender, navigate) =
  * Função para carregar os dados do médico com base no id_doctor
 ---------------------------------------------------------------------------------------------------------- */
 
-export const loadDoctor = async (id_doctor, setDoctor, setService, setGender, navigate) => {
+export const loadDoctor = async (id_doctor, setDoctor, setSpecialty, setGender, navigate) => {
 
     // Tentar executar a requisição GET
     try {
@@ -71,7 +71,7 @@ export const loadDoctor = async (id_doctor, setDoctor, setService, setGender, na
         // Se obteve os dados de retorno da API, irá popular cada uma das variáveis de estado com os dados retornados da API, para preparar para a alteração futuramente
         if (response.data) {
             setDoctor(response.data.name);
-            setService(response.data.specialty);
+            setSpecialty(response.data.specialty);
             setGender(response.data.icon);
         }
 
