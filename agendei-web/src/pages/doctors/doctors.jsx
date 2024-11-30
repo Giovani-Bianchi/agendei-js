@@ -92,6 +92,7 @@ function Doctors() {
                 <thead>
                     <tr>
                         <th scope='col'>Médico</th>
+                        <th scope='col'>Especialidade</th>
                         <ThButtons scope='col'></ThButtons>
                     </tr>
                 </thead>
@@ -104,6 +105,7 @@ function Doctors() {
                                 // Passando as props do doctor
                                 id_doctor={doc.id_doctor}
                                 doctor={doc.name}
+                                specialty={doc.specialty}
 
                                 // Passando as props para os botões de ação, com funções de clique
                                 clickEdit={() => clickEdit(doc.id_doctor, navigate)}

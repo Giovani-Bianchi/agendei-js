@@ -8,6 +8,7 @@ function Doctor(props) {
     // Retornando a linha da tabela do médico com os dados dinâmicos
     return <tr>
         <td>{props.doctor}</td>
+        <td>{props.specialty}</td>
 
         {/* Botões de Ação */}
         <td className="text-end">
