@@ -14,8 +14,8 @@ import { confirmAlert } from 'react-confirm-alert';
 // CSS do react-confirm-alert
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-// Importando os dados simulando a API
-import { services } from '../../constants/data.js';
+// Importando as funções de Services
+import { loadServices, filterServices, changeService, clearInput } from './services.functions.js';
 
 // Importando os Styled Components do Componente de Services
 import { ThButtons } from '../services/services.styles.js';
@@ -25,6 +25,24 @@ import Navbar from "../../components/navbar/navbar.jsx";
 import Service from "../../components/service/service.jsx";
 
 function Services() {
+
+    // Instanciando o navigate
+    const navigate = useNavigate();
+
+    // Variável de estado para armazenar os serviços
+    const [services, setServices] = useState([]);
+
+    // Variável de estado para armazenar os serviços filtrados
+    const [filtroServices, setFiltroServices] = useState([]);
+
+    // Variável de estado para armazanar a troca de ID do select de serviços
+    const [idService, setIdService] = useState("");
+
+    // Carrega os serviços quando a página é carregada
+    useEffect(() => {
+        loadServices(setServices, navigate);
+        filterServices(idService, setFiltroServices, navigate);
+    }, [idService])
 
     return <div className='container-fluid mt-page p-4'>
 
@@ -45,16 +63,22 @@ function Services() {
 
                 {/* Select para escolher o Serviço */}
                 <div className='form-control mx-3'>
-                    {/* Valor padrão do select é o valor do id_doctor, e toda vez que mudar o médico selecionado, o ChangeDoctor altera o id_doctor do value */}
-                    <select name='service' id='service'>
+                    {/* Valor padrão do select é o valor do id_service, e toda vez que mudar o médico selecionado, o ChangeService altera o id_service do value */}
+                    <select name='service' id='service' value={idService} onChange={(e) => changeService(e, setIdService)}>
                         <option value="">Todos os serviços</option>
 
                         {/* Opções do Select  */}
+                        {   
+                            // O map() irá percorrer todo o array services e para cada elemento que ele encontrar no array, chama essa função, é um loop para criar opções do       Select. O ser é o objeto que irá conter os dados do serviço a cada vez que ele percorrer o array
+                            services.map((ser) => {
+                                return <option key={ser.id_service} value={ser.id_service}>{ser.description}</option>
+                            })
+                        }
                     </select>
                 </div>
 
                 {/* Botão de Limpar */}
-                <button type='button' className='btn btn-primary'>Limpar</button>
+                <button type='button' className='btn btn-primary' onClick={() => clearInput(setIdService)}>Limpar</button>
 
             </div>
 
@@ -75,12 +99,12 @@ function Services() {
                 {/* Corpo da Tabela - Loop carregando várias vezes o componente */}
                 <tbody>
                     {
-                        services.map((ser) => {
+                        filtroServices.map((ser) => {
                             return <Service key={ser.id_service}
                                 // Passando as props do serviço
                                 id_service={ser.id_service}
                                 service={ser.description}
-                                
+
                                 // Passando as props para os botões de ação, com funções de clique
                             />
                         })
