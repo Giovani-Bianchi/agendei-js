@@ -4,7 +4,7 @@
 */
 
 // Importações do React Router Dom
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // Importando os Styled Components do Componente de Navbar
 import { Logo } from './navbar.styles.js';
@@ -19,6 +19,9 @@ function Navbar() {
 
     // Instanciando o navigate
     const navigate = useNavigate();
+    
+    // Instanciando o location
+    const location = useLocation();
 
     // Função de Logout
     function Logout() {
@@ -57,12 +60,12 @@ function Navbar() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
                     {/* Link para a Pagina de Agendamentos */}
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/appointments">Agendamentos</Link>
+                        <Link className={`nav-link ${location.pathname === "/appointments" ? "active" : ""}`} to="/appointments">Agendamentos</Link>
                     </li>
 
                     {/* Link para a Pagina de Médicos */}
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/doctors">Médicos</Link>
+                        <Link className={`nav-link ${location.pathname === "/doctors" ? "active" : ""}`} to="/doctors">Médicos</Link>
                     </li>
                 </ul>
 
