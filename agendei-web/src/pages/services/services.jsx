@@ -15,7 +15,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 // Importando as funções de Services
-import { clickEdit, loadServices, filterServices, changeService, clearInput } from './services.functions.js';
+import { clickEdit, clickDelete, loadServices, filterServices, changeService, clearInput } from './services.functions.js';
 
 // Importando os Styled Components do Componente de Services
 import { ThButtons } from '../services/services.styles.js';
@@ -107,6 +107,7 @@ function Services() {
 
                                 // Passando as props para os botões de ação, com funções de clique
                                 clickEdit={() => clickEdit(ser.id_service, navigate)}
+                                clickDelete={() => clickDelete(ser.id_service, confirmAlert, idService, setFiltroServices, navigate, filterServices)}
                             />
                         })
                     }

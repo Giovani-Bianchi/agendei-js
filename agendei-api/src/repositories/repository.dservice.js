@@ -108,5 +108,37 @@ async function Editar(id_service, description) {
 
 }
 
+/**
+ * * Função de Verificar Serviços Vinculados à Agendamentos Assíncrona
+*/ 
+async function VerificarServicos(id_service) {
+    
+    // Consulta para verificar se há algum agendamento com o id_service
+    let sql = "SELECT COUNT(*) AS total FROM appointments WHERE id_service = ?";
+
+    // Constante de resultado com o resultado da query
+    const [result] = await query(sql, [id_service]);
+
+    // Retorna verdadeiro se encontrar agendamentos, caso contrário falso
+    return result.total > 0;
+
+}
+
+/**
+ * * Função de Excluir Serviço Assíncrona
+*/ 
+async function Excluir(id_service) {
+
+    // Comando SQL para excluir um serviço no Banco de Dados com base no ID do serviço (id_service)
+    let sql = "delete from services where id_service = ?"
+
+    // Query para exclusão no BD em que o id_service irá no lugar do ? do comando SQL
+    await query(sql, [id_service]);
+
+    // Retorna apenas o id_service para saber qual foi o serviço que foi excluído, não é necessário retornar o resultado da query pois não há retorno. Não foi necessário colocar em uma constante pois não há retorno.
+    return {id_service};
+
+}
+
 // Exportando as funções do repository.dservice
-export default { Listar, ListarId, Filtrar, Inserir, Editar };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarServicos, Excluir };

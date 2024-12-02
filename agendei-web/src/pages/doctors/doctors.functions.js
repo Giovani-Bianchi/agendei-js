@@ -49,7 +49,7 @@ export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors,
 }
 
 /* --------------------------------------------------------------------------------------------------------
- * Função de deleteAppointment
+ * Função de deleteDoctor
 ---------------------------------------------------------------------------------------------------------- */
 
 const deleteDoctor = async (id_doctor, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {

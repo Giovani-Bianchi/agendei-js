@@ -86,6 +86,9 @@ router.post('/services', jwt.ValidateToken, controllerDService.Inserir);
 // Criando uma rota por PUT para editar um serviço, passando o id do serviço para a URL (id_service). É necessário primeiramente validar o Token para permitir o acesso a edição de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Editar'
 router.put('/services/:id_service', jwt.ValidateToken, controllerDService.Editar);
 
+// Criando uma rota por DELETE para excluir um serviço, passando o id do serviço para a URL (id_service). É necessário primeiramente validar o Token para permitir o acesso a exclusão de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Excluir'
+router.delete('/services/:id_service', jwt.ValidateToken, controllerDService.Excluir);
+
 // ------------------------------------------------------------------------------------------------
 
 //  --------------------------------------ROTAS ADMIN----------------------------------------------

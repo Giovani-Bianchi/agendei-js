@@ -88,5 +88,21 @@ async function Editar(req, res) {
 
 }
 
+/**
+ * * Função de Excluir Serviço Assíncrona
+ */
+async function Excluir(req, res) {
+
+    // Extraindo o id_service da requisição pelo params, para saber qual serviço deve-se excluir
+    const id_service = req.params.id_service;
+
+    // Aguardando a função 'Excluir' do serviceDService
+    const service = await serviceDService.Excluir(id_service);
+
+    // Enviando a resposta para o cliente com o status 200 (OK), foi excluído com sucesso
+    res.status(200).json(service);
+
+}
+
 // Exportando as funções do controller.dservice
-export default { Listar, ListarId, Filtrar, Inserir, Editar }
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir };

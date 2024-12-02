@@ -73,5 +73,26 @@ async function Editar(id_service, description) {
 
 }
 
+/**
+ * * Função de Excluir Serviço Assíncrona
+*/ 
+async function Excluir(id_service) {
+
+    // Verifica se o serviço existe
+    const possuiAgendamentos = await repoDService.VerificarServicos(id_service);
+
+    // Se possuir agendamentos com o serviço cadastrado, não permite a exclusão, retornando null
+    if (possuiAgendamentos) {
+        return null;
+    }
+
+    // Aguardando a função 'Excluir' do repoDService
+    const service = await repoDService.Excluir(id_service);
+
+    // Retornando a exclusão do serviço
+    return service;
+
+}
+
 // Exportando as funções do service.dservice
-export default { Listar, ListarId, Filtrar, Inserir, Editar };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir };
