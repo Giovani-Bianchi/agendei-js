@@ -78,6 +78,14 @@ async function Editar(id_doctor, name, specialty, icon) {
 */ 
 async function Excluir(id_doctor) {
 
+    // Verifica se o médico está vinculado a algum agendamento
+    const possuiAgendamentos = await repoDoctor.VerificarAgendamentos(id_doctor);
+
+    // Se possuir agendamentos com o médico cadastrado, não permite a exclusão, retornando null
+    if (possuiAgendamentos) {
+        return null;
+    }
+
     // Aguardando a função 'Excluir' do repoDoctor
     const doctor = await repoDoctor.Excluir(id_doctor);
 

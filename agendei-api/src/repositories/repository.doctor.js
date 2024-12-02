@@ -126,6 +126,22 @@ async function Editar(id_doctor, name, specialty, icon) {
 }
 
 /**
+ * * Função de Verificar Médicos Vinculados à Agendamentos Assíncrona
+*/ 
+async function VerificarAgendamentos(id_doctor) {
+    
+    // Consulta para verificar se há algum agendamento com o id_doctor
+    let sql = "SELECT COUNT(*) AS total FROM appointments WHERE id_doctor = ?";
+
+    // Constante de resultado com o resultado da query
+    const [result] = await query(sql, [id_doctor]);
+
+    // Retorna verdadeiro se encontrar agendamentos, caso contrário falso
+    return result.total > 0;
+
+}
+
+/**
  * * Função de Excluir Médico Assíncrona
 */ 
 async function Excluir(id_doctor) {
@@ -167,4 +183,4 @@ async function ListarServicos(id_doctor) {
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do repository.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos }
+export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos }

@@ -33,7 +33,7 @@ export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors,
                 label: 'Sim',
                 onClick: () => {
                     // Chamando a API para excluir o médico
-                    deleteDoctor(id_doctor, idDoctor, setFiltroDoctors, filterDoctors, navigate);
+                    deleteDoctor(id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate);
                 }
             },
 
@@ -52,7 +52,7 @@ export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors,
  * Função de deleteDoctor
 ---------------------------------------------------------------------------------------------------------- */
 
-const deleteDoctor = async (id_doctor, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {
+const deleteDoctor = async (id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {
 
     // Tentar executar a requisição DELETE
     try {
@@ -63,6 +63,22 @@ const deleteDoctor = async (id_doctor, idDoctor, setFiltroDoctors, filterDoctors
         // Se o médico foi excluído, recarrega os médicos de novo
         if (response.data) {
             filterDoctors(idDoctor, setFiltroDoctors, navigate);
+        }
+
+        // Se o médico não foi excluído pois já está vinculado à um agendamento, exibe uma mensagem de erro
+        else if (response.data == null) {
+            // Alert de erro na exclusão do médico
+            confirmAlert({
+                title: 'Erro na exclusão',
+                message: 'Erro ao excluir, um ou mais agendamentos estão vinculados a esse médico.',
+                buttons: [
+                    // Botão de voltar
+                    {
+                        label: 'Voltar',
+                        onClick: () => {}
+                    },
+                ]
+            });
         }
 
     }
