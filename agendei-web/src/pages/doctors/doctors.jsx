@@ -15,7 +15,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 // Importando as funções de Doctors
-import { clickEdit, clickDelete, loadDoctors, filterDoctors, changeDoctor, clearInput } from './doctors.functions.js';
+import { clickServices, clickEdit, clickDelete, loadDoctors, filterDoctors, changeDoctor, clearInput } from './doctors.functions.js';
 
 // Importando os Styled Components do Componente de Doctors
 import { ThButtons } from './doctors.styles.js';
@@ -93,6 +93,7 @@ function Doctors() {
                     <tr>
                         <th scope='col'>Médico</th>
                         <th scope='col'>Especialidade</th>
+                        <th scope='col'>Serviços do Médico</th>
                         <ThButtons scope='col'></ThButtons>
                     </tr>
                 </thead>
@@ -108,6 +109,7 @@ function Doctors() {
                                 specialty={doc.specialty}
 
                                 // Passando as props para os botões de ação, com funções de clique
+                                clickServices={() => clickServices(doc.id_doctor, navigate)}
                                 clickEdit={() => clickEdit(doc.id_doctor, navigate)}
                                 clickDelete={() => clickDelete(doc.id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate)}
                             />

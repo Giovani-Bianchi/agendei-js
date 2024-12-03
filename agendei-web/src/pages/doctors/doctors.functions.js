@@ -7,6 +7,17 @@
 import api from "../../constants/api.js";
 
 /* --------------------------------------------------------------------------------------------------------
+ * Função de clickServices - Passamos o id_doctor para identificar qual médico está querendo gerenciar os serviços, isso está vinculado ao clique do botão de Serviços
+---------------------------------------------------------------------------------------------------------- */
+
+export const clickServices = (id_doctor, navigate) => {
+
+    // Levando o usuário para a tela de serviços do médico passando o ID do doctor
+    navigate("/doctors/" + id_doctor + "/services")
+
+}
+
+/* --------------------------------------------------------------------------------------------------------
  * Função de clickEdit - Passamos o id_doctor para identificar qual médico está querendo editar, isso está vinculado ao clique do botão de Editar
 ---------------------------------------------------------------------------------------------------------- */
 

@@ -166,8 +166,9 @@ async function ListarServicos(id_doctor) {
 
 
     // Comando SQL para listar os serviços do médico por nome, ? representa um parâmetro da consulta. Irá listar o id do serviço, a descrição do serviço e o preço do serviço ordenados pela descrição, utilizando o join para poder pegar os dados da tabela de serviços. Foi usado o alias para nomear as tabelas com 'd' e 's'.
-    let sql = `select d.id_service, s.description, d.price
+    let sql = `select d.id_doctor, d.id_service, doc.name, s.description, d.price
                 from doctors_services d
+                join doctors doc on (d.id_doctor = doc.id_doctor)
                 join services s on (s.id_service = d.id_service)
                 where d.id_doctor = ?
                 order by s.description`;

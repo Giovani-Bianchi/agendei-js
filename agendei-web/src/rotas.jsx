@@ -15,6 +15,7 @@ import Doctors from "./pages/doctors/doctors.jsx";
 import DoctorAdd from "./pages/doctor-add/doctor-add.jsx";
 import Services from "./pages/services/services.jsx";
 import ServiceAdd from "./pages/service-add/service-add.jsx";
+import DoctorServices from "./pages/doctor-services/doctor-services.jsx";
 
 function Rotas() {
 
@@ -62,6 +63,11 @@ function Rotas() {
 
             {/* Rota - Tela de Editar Service */}
             <Route path="/services/edit/:id_service" element={<ServiceAdd />} />
+
+            {/* --------------------------------------------- Doctor Services --------------------------------------------- */}
+
+            {/* Rota - Tela de Doctor Services do Doctor */}
+            <Route path="/doctors/:id_doctor/services" element={<DoctorServices />} />
 
         </Routes>
     </BrowserRouter>

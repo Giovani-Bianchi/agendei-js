@@ -9,6 +9,13 @@ function Doctor(props) {
     return <tr>
         <td>{props.doctor}</td>
         <td>{props.specialty}</td>
+        
+        {/* Botão de Serviços do Médico */}
+        <td>
+            <button className="btn btn-primary" onClick={() => props.clickServices(props.id_doctor)}>
+                Serviços
+            </button>
+        </td>
 
         {/* Botões de Ação */}
         <td className="text-end">
