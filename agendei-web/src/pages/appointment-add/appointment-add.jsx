@@ -58,8 +58,18 @@ function AppointmentAdd() {
 
     // useEffect para os serviços, que não pode ser carregado toda vez que a página é carregada, pois os serviços tem que ser carregados conforme o médico escolhido, para selecionar apenas os serviços referente àquele médico. O critério para esse useEffect é toda vez que a variável de médico for alterada no select
     useEffect(() => {
-        // Carrega todos os serviços para o médico com o id informado
-        loadServices(idDoctor, setServices, navigate);
+        // Resetando o serviço selecionado
+        setIdService(""); 
+
+        // Carregando os serviços para o médico com o id informado
+        if (idDoctor) {
+            loadServices(idDoctor, setServices, navigate);
+        } 
+        
+        else {
+            // Se nenhum médico estiver selecionado, limpa os serviços disponíveis
+            setServices([]);
+        }
     }, [idDoctor]);
 
     return <>
