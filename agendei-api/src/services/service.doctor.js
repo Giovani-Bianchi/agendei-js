@@ -109,7 +109,20 @@ async function ListarServicos(id_doctor) {
 
 }
 
+/**
+ * * Função de Inserir Serviço do Médico Assíncrona
+*/ 
+async function InserirServico(id_doctor, id_service, price) {
+
+    // Aguardando a função 'InserirServicos' do repoDoctor
+    const serv = await repoDoctor.InserirServico(id_doctor, id_service, price);
+
+    // Retornando o serviço do médico
+    return serv;
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções da service.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico };

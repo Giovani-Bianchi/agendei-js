@@ -164,7 +164,6 @@ async function Excluir(id_doctor) {
 */ 
 async function ListarServicos(id_doctor) {
 
-
     // Comando SQL para listar os serviços do médico por nome, ? representa um parâmetro da consulta. Irá listar o id do serviço, a descrição do serviço e o preço do serviço ordenados pela descrição, utilizando o join para poder pegar os dados da tabela de serviços. Foi usado o alias para nomear as tabelas com 'd' e 's'.
     let sql = `select d.id_doctor, d.id_service, doc.name, s.description, d.price
                 from doctors_services d
@@ -181,7 +180,23 @@ async function ListarServicos(id_doctor) {
 
 }
 
+/**
+ * * Função de Inserir Serviço do Médico Assíncrona
+*/ 
+async function InserirServico(id_doctor, id_service, price) {
+
+    // Comando SQL para inserir um serviço relacionado a determinado médico
+    let sql = `insert into doctors_services (id_doctor, id_service, price) values (?, ?, ?)`;
+
+    // Contante de serviço para inserir o serviço prestado por determinado médico
+    const serv = await query(sql, [id_doctor, id_service, price]);
+
+    // Retornando o serviço do médico
+    return serv;
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do repository.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos }
+export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos, InserirServico }

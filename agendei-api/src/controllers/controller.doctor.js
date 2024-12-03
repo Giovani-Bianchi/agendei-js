@@ -130,7 +130,23 @@ async function ListarServicos(req, res) {
 
 }
 
+/**
+ * * Função de Inserir Serviço do Médico Assíncrona
+ */
+async function InserirServico(req, res) {
+
+    // Acessando os dados do corpo da requisição e desestruturando eles para cada variável
+    const { id_doctor, id_service, price } = req.body;
+
+    // Aguardando a função 'InserirServico' do serviceDoctor
+    const serv = await serviceDoctor.InserirServico(id_doctor, id_service, price);
+
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados
+    res.status(200).json(serv);
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do controller.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico };
