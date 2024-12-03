@@ -239,3 +239,20 @@ export const saveAppointment = async (idUser, idDoctor, idService, bookingDate, 
     }
 
 }
+
+/* --------------------------------------------------------------------------------------------------------
+ * Função para lidar com a alteração do médico no select
+---------------------------------------------------------------------------------------------------------- */
+
+export const doctorChange = (e, idDoctor, setIsDoctorChanged, setIdDoctor) => {
+    
+    // Verifica se o valor selecionado no select (e.target.value) é diferente do ID do médico atual (idDoctor)
+    if (e.target.value !== idDoctor) {
+        // Marca o estado 'isDoctorChanged' como true, indicando que o médico foi alterado
+        setIsDoctorChanged(true);
+
+        // Atualiza o estado 'idDoctor' com o novo valor selecionado no select
+        setIdDoctor(e.target.value);
+    }
+
+};

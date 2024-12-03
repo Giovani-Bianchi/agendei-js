@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Importando as funções do Appointment Add
-import { loadUsers, loadDoctors, loadServices, saveAppointment } from "./appointment-add.functions.js";
+import { loadUsers, loadDoctors, loadServices, saveAppointment, doctorChange } from "./appointment-add.functions.js";
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
@@ -39,6 +39,9 @@ function AppointmentAdd() {
     const [bookingDate, setBookingDate] = useState("");
     const [bookingHour, setBookingHour] = useState("");
 
+    // Variável de estado para controlar a troca de médico
+    const [isDoctorChanged, setIsDoctorChanged] = useState(false);
+
     // Função para verificar se todos os campos estão preenchidos
     const isFormValid =
         idUser !== "" && idUser !== "0" &&
@@ -58,19 +61,24 @@ function AppointmentAdd() {
 
     // useEffect para os serviços, que não pode ser carregado toda vez que a página é carregada, pois os serviços tem que ser carregados conforme o médico escolhido, para selecionar apenas os serviços referente àquele médico. O critério para esse useEffect é toda vez que a variável de médico for alterada no select
     useEffect(() => {
-        // Resetando o serviço selecionado
-        setIdService(""); 
-
-        // Carregando os serviços para o médico com o id informado
+        // Verifica se o ID do médico foi definido (não é nulo ou vazio)
         if (idDoctor) {
+            // Carrega os serviços disponíveis para o médico com o ID fornecido
             loadServices(idDoctor, setServices, navigate);
+    
+            // Se o médico foi trocado (indicado por isDoctorChanged)
+            if (isDoctorChanged) {
+                // Reseta o serviço selecionado, limpando o valor atual
+                setIdService("");
+            }
         } 
         
+        // Caso o ID do médico não esteja definido (nenhum médico selecionado)
         else {
-            // Se nenhum médico estiver selecionado, limpa os serviços disponíveis
+            // Limpa a lista de serviços disponíveis
             setServices([]);
         }
-    }, [idDoctor]);
+    }, [idDoctor, isDoctorChanged]);
 
     return <>
     
@@ -114,7 +122,7 @@ function AppointmentAdd() {
                 <div className="col-12 mt-4">
                     <label htmlFor="doctor" className="form-label">Médico</label>
                     <div className='form-control mb-2'>
-                        <select name='doctor' id='doctor' value={idDoctor} onChange={(e) => setIdDoctor(e.target.value)}>
+                        <select name='doctor' id='doctor' value={idDoctor} onChange={(e) => doctorChange(e, idDoctor, setIsDoctorChanged, setIdDoctor)}>
                             {/* Se a variável idDoctor for vazia, mostra a opção de Selecione o médico, senão, não mostra */}
                             {idDoctor === "" && (
                                 <option value="" disabled hidden>
