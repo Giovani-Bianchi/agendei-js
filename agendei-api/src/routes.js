@@ -47,6 +47,9 @@ router.get('/doctors/:id_doctor/services', jwt.ValidateToken, controllerDoctor.L
 // Criando uma rota por POST para inserir o serviço dos médico. É necessário primeiramente validar o Token para permitir o acesso a inserção do serviço do médico, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'InserirServico'
 router.post('/doctors/:id_doctor/services', jwt.ValidateToken, controllerDoctor.InserirServico);
 
+// Criando uma rota por DELETE para excluir um serviço do médico, passando o id do médico para a URL (id_doctor) e o id do serviço do médico (id_doctor_service). É necessário primeiramente validar o Token para permitir o acesso a exclusão de serviços do médico, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'ExcluirServico'
+router.delete('/doctors/:id_doctor/services/:id_service/:id_doctor_service', jwt.ValidateToken, controllerDoctor.ExcluirServico);
+
 // ------------------------------------------------------------------------------------------------
 
 //  ---------------------------------------------USERS---------------------------------------------

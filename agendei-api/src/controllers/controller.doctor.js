@@ -146,7 +146,29 @@ async function InserirServico(req, res) {
 
 }
 
+/**
+ * * Função de Excluir Serviço do Médico Assíncrona
+ */
+async function ExcluirServico(req, res) {
+
+    // Extraindo o id_doctor da requisição pelo params, para saber de qual médico é o serviço
+    const id_doctor = req.params.id_doctor;
+
+    // Extraindo o id_service da requisição pelo params, para saber qual é o serviço
+    const id_service = req.params.id_service;
+
+    // Extraindo o id_doctor_service da requisição pelo params, para saber qual serviço do médico deve-se excluir
+    const id_doctor_service = req.params.id_doctor_service;
+
+    // Aguardando a função 'ExcluirServico' do serviceDoctor
+    const serv = await serviceDoctor.ExcluirServico(id_doctor, id_service, id_doctor_service);
+
+    // Enviando a resposta para o cliente com o status 200 (OK), foi excluído com sucesso
+    res.status(200).json(serv);
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do controller.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico, ExcluirServico };

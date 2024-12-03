@@ -165,7 +165,7 @@ async function Excluir(id_doctor) {
 async function ListarServicos(id_doctor) {
 
     // Comando SQL para listar os serviços do médico por nome, ? representa um parâmetro da consulta. Irá listar o id do serviço, a descrição do serviço e o preço do serviço ordenados pela descrição, utilizando o join para poder pegar os dados da tabela de serviços. Foi usado o alias para nomear as tabelas com 'd' e 's'.
-    let sql = `select d.id_doctor, d.id_service, doc.name, s.description, d.price
+    let sql = `select d.id_doctor_service, d.id_doctor, d.id_service, doc.name, s.description, d.price
                 from doctors_services d
                 join doctors doc on (d.id_doctor = doc.id_doctor)
                 join services s on (s.id_service = d.id_service)
@@ -196,7 +196,39 @@ async function InserirServico(id_doctor, id_service, price) {
 
 }
 
+/**
+ * * Função de Verificar os Serviços do Médico Vinculados à Agendamentos Assíncrona
+*/ 
+async function VerificarServicos(id_doctor, id_service) {
+    
+    // Consulta para verificar se há algum agendamento com o id_doctor e o id_service passado
+    let sql = "SELECT COUNT(*) AS total FROM appointments WHERE id_doctor = ? AND id_service = ?";
+
+    // Constante de resultado com o resultado da query
+    const [result] = await query(sql, [id_doctor, id_service]);
+
+    // Retorna verdadeiro se encontrar agendamentos, caso contrário falso
+    return result.total > 0;
+
+}
+
+/**
+ * * Função de Excluir Serviço do Médico Assíncrona
+*/ 
+async function ExcluirServico(id_doctor, id_doctor_service) {
+
+    // Comando SQL para excluir um serviço do médico no Banco de Dados com base no ID do médico (id_doctor) e no id do serviço do médico (id_doctor_service)
+    let sql = "delete from doctors_services where id_doctor = ? and id_doctor_service = ?";
+
+    // Query para exclusão no BD em que o id_doctor e o id_doctor_service irão no lugar dos ? do comando SQL, respectivamente
+    await query(sql, [id_doctor, id_doctor_service]);
+
+    // Retorna apenas o id_doctor_service para saber qual foi o serviço do médico que foi excluído, não é necessário retornar o resultado da query pois não há retorno. Não foi necessário colocar em uma constante pois não há retorno.
+    return {id_doctor_service};
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do repository.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos, InserirServico }
+export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos, InserirServico, VerificarServicos, ExcluirServico };

@@ -122,7 +122,28 @@ async function InserirServico(id_doctor, id_service, price) {
 
 }
 
+/**
+ * * Função de Excluir Serviço do Médico Assíncrona
+*/ 
+async function ExcluirServico(id_doctor, id_service, id_doctor_service) {
+
+    // Verifica se o serviço do médico está vinculado a algum agendamento
+    const possuiAgendamentos = await repoDoctor.VerificarServicos(id_doctor, id_service);
+
+    // Se possuir agendamentos com o serviço do médico cadastrado, não permite a exclusão, retornando null
+    if (possuiAgendamentos) {
+        return null;
+    }
+
+    // Aguardando a função 'ExcluirServico' do repoDoctor
+    const serv = await repoDoctor.ExcluirServico(id_doctor, id_doctor_service);
+
+    // Retornando a exclusão do médico
+    return serv;
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções da service.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico, ExcluirServico };
