@@ -22,6 +22,22 @@ async function Listar(req, res) {
 }
 
 /**
+ * * Função de Listar Apenas os Serviços Não Vinculados ao Médico Assíncrona
+*/ 
+async function ListarDoctorServices(req, res) {
+    
+    // Acessando o parâmetro id_doctor pelos parâmetros da requisição
+    const id_doctor = req.params.id_doctor;
+
+    // Aguardando a função 'ListarDoctorServices' do serviceDService
+    const services = await serviceDService.ListarDoctorServices(id_doctor);
+
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados
+    res.status(200).json(services);
+
+}
+
+/**
  * * Função de Exibir os Dados do Serviço Assíncrona
 */ 
 async function ListarId(req, res) {
@@ -105,4 +121,4 @@ async function Excluir(req, res) {
 }
 
 // Exportando as funções do controller.dservice
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir };
+export default { Listar, ListarDoctorServices, ListarId, Filtrar, Inserir, Editar, Excluir };

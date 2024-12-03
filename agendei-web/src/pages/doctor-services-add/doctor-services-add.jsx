@@ -14,6 +14,7 @@ import { loadServices, saveDoctorService } from "./doctor-services-add.functions
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
+import { confirmAlert } from "react-confirm-alert";
 
 function DoctorServicesAdd() {
 
@@ -40,7 +41,7 @@ function DoctorServicesAdd() {
 
     // Carrega os dados do serviço do médico sempre que o componente for montado (caso seja passado um id)
     useEffect(() => {
-        loadServices(setServices, navigate)
+        loadServices(id_doctor, confirmAlert, setServices, navigate)
     }, []);
 
     return <>

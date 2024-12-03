@@ -7,21 +7,37 @@
 import api from "../../constants/api.js";
 
 /* --------------------------------------------------------------------------------------------------------
- * Função para carregar os serviços
+ * Função para carregar os serviços que não estão vinculados ao médico
 ---------------------------------------------------------------------------------------------------------- */
 
-export const loadServices = async (setServices, navigate) => {
+export const loadServices = async (id_doctor, confirmAlert, setServices, navigate) => {
 
     // Tentar executar a requisição GET
     try {
             
         // Criando a requisição de serviços para a API usando o método GET
-        const response = await api.get("/services");
+        const response = await api.get("/services/" + id_doctor);
 
         // Se obteve os dados de retorno da API
         if (response.data) {
             // Atualizando o estado com os dados retornados da API, é feito o map() mais abaixo para posicionar os dados conforme o layout
             setServices(response.data);
+        }
+
+        // Se não existirem serviços na tabela services que não estejam vinculados ao médico
+        else if (response.data == null) {
+            // Alert de aviso ao usuário
+            confirmAlert({
+                title: 'Não há serviços para vincular',
+                message: 'Volte e crie mais serviços para vincular ao médico.',
+                buttons: [
+                    // Botão de voltar
+                    {
+                        label: 'Voltar',
+                        onClick: () => { navigate("/doctors/" + id_doctor + "/services"); }
+                    },
+                ]
+            });
         }
 
     }

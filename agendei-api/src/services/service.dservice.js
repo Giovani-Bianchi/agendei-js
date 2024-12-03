@@ -22,6 +22,25 @@ async function Listar() {
 }
 
 /**
+ * * Função de Listar Apenas os Serviços Não Vinculados ao Médico Assíncrona
+*/ 
+async function ListarDoctorServices(id_doctor) {
+
+    // Aguardando a função 'ListarDoctorServices' do repoDService
+    const services = await repoDService.ListarDoctorServices(id_doctor);
+
+    // Se não existirem serviços na tabela services que não estejam vinculados ao médico, retorna null
+    // Se o tamanho do array for igual a 0, retorna null
+    if (services.length === 0) {
+        return null;
+    }
+
+    // Retornando a lista de serviços
+    return services;
+
+}
+
+/**
  * * Função de Exibir os Dados do Serviço Assíncrona
 */ 
 async function ListarId(id_service) {
@@ -95,4 +114,4 @@ async function Excluir(id_service) {
 }
 
 // Exportando as funções do service.dservice
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir };
+export default { Listar, ListarDoctorServices, ListarId, Filtrar, Inserir, Editar, Excluir };

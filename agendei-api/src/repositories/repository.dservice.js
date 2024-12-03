@@ -26,6 +26,29 @@ async function Listar() {
 }
 
 /**
+ * * Função de Listar Apenas os Serviços Não Vinculados ao Médico Assíncrona
+*/ 
+async function ListarDoctorServices(id_doctor) {
+
+    // Comando SQL para listar apenas os serviços não vinculados ao médico
+    let sql = `SELECT *
+                FROM services
+                WHERE id_service NOT IN (
+                    SELECT id_service
+                    FROM doctors_services
+                    WHERE id_doctor = ?
+                );`;
+
+    // Constante de services que espera a resposta da query passando como primeiro parâmetro o comando e como segundo os parâmetros extras, que nesse caso é o filtro
+    // Por ser uma Promise, temos que usar o await para esperar a consulta ser finalizada para assim então retornar os dados para a const services
+    const services = await query(sql, [id_doctor]);
+
+    // Retornando a lista de serviços
+    return services;
+
+}
+
+/**
  * * Função de Exibir os Dados do Serviço Assíncrona
 */ 
 async function ListarId(id_service) {
@@ -141,4 +164,4 @@ async function Excluir(id_service) {
 }
 
 // Exportando as funções do repository.dservice
-export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarServicos, Excluir };
+export default { Listar, ListarDoctorServices, ListarId, Filtrar, Inserir, Editar, VerificarServicos, Excluir };

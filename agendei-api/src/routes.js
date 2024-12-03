@@ -83,6 +83,9 @@ router.delete('/appointments/:id_appointment', jwt.ValidateToken, controllerAppo
 // Criando uma rota por GET para servir a lista de serviços. É necessário primeiramente validar o Token para permitir o acesso a lista de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Listar'
 router.get('/services', jwt.ValidateToken, controllerDService.Listar);
 
+// Criando uma rota por GET para retornar uma lista de serviços que ainda não estão vinculados a o médico específico. É necessário primeiramente validar o Token para permitir o acesso a lista de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'ListarDoctorServices'
+router.get('/services/:id_doctor', jwt.ValidateToken, controllerDService.ListarDoctorServices);
+
 // Criando uma rota por GET para servir a lista de serviços. É necessário primeiramente validar o Token para permitir o acesso a lista de serviços, caso a validação seja sucedida, através do 'next()', a rota é executada com o método 'Filtrar'
 router.get('/services/filter', jwt.ValidateToken, controllerDService.Filtrar);
 
