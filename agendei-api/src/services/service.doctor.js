@@ -138,7 +138,20 @@ async function ExcluirServico(id_doctor, id_service, id_doctor_service) {
     // Aguardando a função 'ExcluirServico' do repoDoctor
     const serv = await repoDoctor.ExcluirServico(id_doctor, id_doctor_service);
 
-    // Retornando a exclusão do médico
+    // Retornando a exclusão do serviço do médico
+    return serv;
+
+}
+
+/**
+ * * Função de Editar Serviço do Médico Assíncrona
+*/ 
+async function EditarServico(id_doctor, id_doctor_service, id_service, price) {
+
+    // Aguardando a função 'EditarServico' do repoDoctor
+    const serv = await repoDoctor.EditarServico(id_doctor, id_doctor_service, id_service, price);
+
+    // Retornando a edição do serviço do médico
     return serv;
 
 }
@@ -146,4 +159,4 @@ async function ExcluirServico(id_doctor, id_service, id_doctor_service) {
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções da service.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico, ExcluirServico };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico, ExcluirServico, EditarServico };

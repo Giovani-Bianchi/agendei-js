@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Importando as funções do Doctor Services Add
-import { loadServices, saveDoctorService } from "./doctor-services-add.functions.js";
+import { loadServices, loadDoctorService, saveDoctorService } from "./doctor-services-add.functions.js";
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
@@ -21,11 +21,8 @@ function DoctorServicesAdd() {
     // Instanciando o navigate
     const navigate = useNavigate();
 
-    // Constante de id do doctor, ao carregar essa tela, o useParams irá tentar pegar o id da URL
-    const { id_doctor } = useParams();
-
-    // Constante de id do doctor service, ao carregar essa tela, o useParams irá tentar pegar o id da URL, se ele conseguir, significa que é uma edição, senão, é uma criação
-    const { id_doctor_service } = useParams();
+    // Constante que captura o id_doctor e o id_doctor_service pela URL
+    const { id_doctor, id_doctor_service } = useParams();
 
     // Variável de estado de serviços para carregar os dados dos serviços
     const [services, setServices] = useState([]);
@@ -41,7 +38,8 @@ function DoctorServicesAdd() {
 
     // Carrega os dados do serviço do médico sempre que o componente for montado (caso seja passado um id)
     useEffect(() => {
-        loadServices(id_doctor, confirmAlert, setServices, navigate)
+        loadServices(id_doctor, id_doctor_service, confirmAlert, setServices, navigate);
+        loadDoctorService(id_doctor, id_doctor_service, setIdService, setPrice, navigate);
     }, []);
 
     return <>

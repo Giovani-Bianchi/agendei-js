@@ -28,23 +28,45 @@ async function Listar() {
 /**
  * * Função de Listar Apenas os Serviços Não Vinculados ao Médico Assíncrona
 */ 
-async function ListarDoctorServices(id_doctor) {
+async function ListarDoctorServices(id_doctor, id_doctor_service) {
 
     // Comando SQL para listar apenas os serviços não vinculados ao médico
     let sql = `SELECT *
-                FROM services
-                WHERE id_service NOT IN (
+                FROM services s
+                WHERE s.id_service NOT IN (
                     SELECT id_service
                     FROM doctors_services
                     WHERE id_doctor = ?
+                )
+                OR s.id_service = (
+                    SELECT id_service
+                    FROM doctors_services
+                    WHERE id_doctor_service = ?
                 );`;
 
     // Constante de services que espera a resposta da query passando como primeiro parâmetro o comando e como segundo os parâmetros extras, que nesse caso é o filtro
     // Por ser uma Promise, temos que usar o await para esperar a consulta ser finalizada para assim então retornar os dados para a const services
-    const services = await query(sql, [id_doctor]);
+    const services = await query(sql, [id_doctor, id_doctor_service]);
 
     // Retornando a lista de serviços
     return services;
+
+}
+
+/**
+ * * Função de Capturar os Dados Referente ao Serviço do Médico Assíncrona
+*/ 
+async function CapturarDoctorService(id_doctor, id_doctor_service) {
+
+    // Comando SQL para capturar o serviço do médico
+    let sql = "select * from doctors_services where id_doctor = ? and id_doctor_service = ?";
+
+    // Constante de service que espera a resposta da query passando como primeiro parâmetro o comando e como segundo os parâmetros extras, que nesse caso é o filtro
+    // Por ser uma Promise, temos que usar o await para esperar a consulta ser finalizada para assim então retornar os dados para a const services
+    const service = await query(sql, [id_doctor, id_doctor_service]);
+
+    // Retornando o serviço do médico
+    return service[0];
 
 }
 
@@ -164,4 +186,4 @@ async function Excluir(id_service) {
 }
 
 // Exportando as funções do repository.dservice
-export default { Listar, ListarDoctorServices, ListarId, Filtrar, Inserir, Editar, VerificarServicos, Excluir };
+export default { Listar, ListarDoctorServices, CapturarDoctorService, ListarId, Filtrar, Inserir, Editar, VerificarServicos, Excluir };

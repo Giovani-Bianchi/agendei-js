@@ -10,13 +10,13 @@ import api from "../../constants/api.js";
  * Função para carregar os serviços que não estão vinculados ao médico
 ---------------------------------------------------------------------------------------------------------- */
 
-export const loadServices = async (id_doctor, confirmAlert, setServices, navigate) => {
+export const loadServices = async (id_doctor, id_doctor_service, confirmAlert, setServices, navigate) => {
 
     // Tentar executar a requisição GET
     try {
             
         // Criando a requisição de serviços para a API usando o método GET
-        const response = await api.get("/services/" + id_doctor);
+        const response = await api.get("/services/" + id_doctor + "/" + id_doctor_service);
 
         // Se obteve os dados de retorno da API
         if (response.data) {
@@ -58,6 +58,48 @@ export const loadServices = async (id_doctor, confirmAlert, setServices, navigat
         // Se não conseguiu obter qual é o erro vindo do servidor, então exibe a mensagem de erro padrão
         else {
             alert("Erro ao listar serviços. Tente novamente mais tarde.");
+        }
+
+    }
+
+}
+
+/* --------------------------------------------------------------------------------------------------------
+ * Função para carregar os dados do serviço do médico com base no id_doctor e id_doctor_service
+---------------------------------------------------------------------------------------------------------- */
+
+export const loadDoctorService = async (id_doctor, id_doctor_service, setIdService, setPrice, navigate) => {
+
+    // Tentar executar a requisição GET
+    try {
+            
+        // Criando a requisição de capturar os dados do serviço do médico pelos IDs para a API usando o método GET
+        const response = await api.get("/admin/doctors/" + id_doctor + "/services/" + id_doctor_service);
+
+        // Se obteve os dados de retorno da API, irá popular cada uma das variáveis de estado com os dados retornados da API, para preparar para a alteração futuramente
+        if (response.data) {
+            setIdService(response.data.id_service);
+            setPrice(response.data.price);
+        }
+
+    }
+        
+    // Se não conseguir, trata o erro que ocorreu, aqui é para erros que vieram do servidor (API)
+    catch (error) {
+
+        // Se dentro do error, conseguiu obter o response e dentro do response existe a propriedade data e dentro da data há qual é o erro (? significa que pode não existir)
+        if (error.response?.data.error) {
+            // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
+            if (error.response.status == 401) {
+                return navigate('/');
+            }
+
+            alert(error.response?.data.error);
+        }
+
+        // Se não conseguiu obter qual é o erro vindo do servidor, então exibe a mensagem de erro padrão
+        else {
+            alert("Erro ao listar serviço do médico. Tente novamente mais tarde.");
         }
 
     }

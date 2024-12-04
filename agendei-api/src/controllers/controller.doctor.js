@@ -168,7 +168,29 @@ async function ExcluirServico(req, res) {
 
 }
 
+/**
+ * * Função de Editar Serviço do Médico Assíncrona
+ */
+async function EditarServico(req, res) {
+
+    // Extraindo o id_doctor da requisição pelo params, para saber de qual médico é o serviço
+    const id_doctor = req.params.id_doctor;
+
+    // Extraindo o id_doctor_service da requisição pelo params, para saber qual serviço do médico deve-se editar
+    const id_doctor_service = req.params.id_doctor_service;
+
+    // Acessando os dados do corpo da requisição e desestruturando eles para cada variável
+    const { id_service, price } = req.body;
+
+    // Aguardando a função 'EditarServico' do serviceDoctor
+    const serv = await serviceDoctor.EditarServico(id_doctor, id_doctor_service, id_service, price);
+
+    // Enviando a resposta para o cliente com o status 200 (OK), foi editado com sucesso
+    res.status(200).json(serv);
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do controller.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico, ExcluirServico };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, Excluir, ListarServicos, InserirServico, ExcluirServico, EditarServico };

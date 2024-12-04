@@ -7,6 +7,17 @@
 import api from "../../constants/api.js";
 
 /* --------------------------------------------------------------------------------------------------------
+ * Função de clickEdit - Passamos o id_doctor_service para identificar qual serviço do médico está querendo editar, assim como o id_doctor, isso está vinculado ao clique do botão de Editar
+---------------------------------------------------------------------------------------------------------- */
+
+export const clickEdit = (id_doctor, id_doctor_service, navigate) => {
+
+    // Levando o usuário para a tela de edição passando o ID do doctor e o ID do doctor service
+    navigate("/doctors/" + id_doctor + "/services/edit/" + id_doctor_service);
+
+}
+
+/* --------------------------------------------------------------------------------------------------------
  * Função de clickDelete - Passamos o id_doctor_service para identificar qual serviço do médico está querendo excluir, assim como o id_doctor, isso está vinculado ao clique do botão de Excluir
 ---------------------------------------------------------------------------------------------------------- */
 

@@ -15,7 +15,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 // Importando as funções de Doctors
-import { clickDelete, loadServices } from './doctor-services.functions.js';
+import { clickEdit, clickDelete, loadServices } from './doctor-services.functions.js';
 
 // Importando os Styled Components do Componente de Doctors
 import { StyledLink, ThButtons } from './doctor-services.styles.js';
@@ -79,6 +79,7 @@ function DoctorServices() {
                                 price={doc.price}
 
                                 // Passando as props para os botões de ação, com funções de clique
+                                clickEdit={() => clickEdit(id_doctor, doc.id_doctor_service, navigate)}
                                 clickDelete={() => clickDelete(doc.id_doctor_service, doc.id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, navigate)}
                             />
                         })

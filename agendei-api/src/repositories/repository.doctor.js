@@ -228,7 +228,26 @@ async function ExcluirServico(id_doctor, id_doctor_service) {
 
 }
 
+/**
+ * * Função de Editar Serviço do Médico Assíncrona
+*/ 
+async function EditarServico(id_doctor, id_doctor_service, id_service, price) {
+
+    // Comando SQL para editar um serviço do médico no Banco de Dados com base no ID do médico (id_doctor) e no id do serviço do médico (id_doctor_service)
+    let sql = `update doctors_services set 
+                    id_service = ?, 
+                    price = ?
+                where id_doctor = ? and id_doctor_service = ?`;
+
+    // Query para edição no BD em que o id_doctor, id_doctor_service, id_service e price irão no lugar dos ? do comando SQL, respectivamente
+    await query(sql, [id_service, price, id_doctor, id_doctor_service]);
+
+    // Retorna apenas o id_doctor_service para saber qual foi o serviço do médico que foi editado, não é necessário retornar o resultado da query pois não há retorno. Não foi necessário colocar em uma constante pois não há retorno.
+    return {id_doctor_service};
+
+}
+
 // * -----------------------------------------------------------------------------------------------
 
 // Exportando as funções do repository.doctor
-export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos, InserirServico, VerificarServicos, ExcluirServico };
+export default { Listar, ListarId, Filtrar, Inserir, Editar, VerificarAgendamentos, Excluir, ListarServicos, InserirServico, VerificarServicos, ExcluirServico, EditarServico };

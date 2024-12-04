@@ -73,6 +73,9 @@ function Rotas() {
             {/* Rota - Tela de Adicionar Services do Doctor */}
             <Route path="/doctors/:id_doctor/services/add" element={<DoctorServicesAdd />} />
 
+            {/* Rota - Tela de Editar Service do Doctor */}
+            <Route path="/doctors/:id_doctor/services/edit/:id_doctor_service" element={<DoctorServicesAdd />} />
+
         </Routes>
     </BrowserRouter>
 

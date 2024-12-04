@@ -29,11 +29,33 @@ async function ListarDoctorServices(req, res) {
     // Acessando o parâmetro id_doctor pelos parâmetros da requisição
     const id_doctor = req.params.id_doctor;
 
+    // Acessando o parâmetro id_doctor pelos parâmetros da requisição
+    const id_doctor_service = req.params.id_doctor_service;
+
     // Aguardando a função 'ListarDoctorServices' do serviceDService
-    const services = await serviceDService.ListarDoctorServices(id_doctor);
+    const services = await serviceDService.ListarDoctorServices(id_doctor, id_doctor_service);
 
     // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados
     res.status(200).json(services);
+
+}
+
+/**
+ * * Função de Capturar os Dados Referente ao Serviço do Médico Assíncrona
+*/ 
+async function CapturarDoctorService(req, res) {
+    
+    // Acessando o parâmetro id_doctor pelos parâmetros da requisição
+    const id_doctor = req.params.id_doctor;
+
+    // Acessando o parâmetro id_doctor pelos parâmetros da requisição
+    const id_doctor_service = req.params.id_doctor_service;
+
+    // Aguardando a função 'CapturarDoctorService' do serviceDService
+    const service = await serviceDService.CapturarDoctorService(id_doctor, id_doctor_service);
+
+    // Enviando a resposta para o cliente com o status 200 (OK) e o JSON contendo os dados
+    res.status(200).json(service);
 
 }
 
@@ -121,4 +143,4 @@ async function Excluir(req, res) {
 }
 
 // Exportando as funções do controller.dservice
-export default { Listar, ListarDoctorServices, ListarId, Filtrar, Inserir, Editar, Excluir };
+export default { Listar, ListarDoctorServices, CapturarDoctorService, ListarId, Filtrar, Inserir, Editar, Excluir };
