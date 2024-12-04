@@ -65,12 +65,12 @@ const deleteService = async (id_service, confirmAlert, idService, setFiltroServi
             filterServices(idService, setFiltroServices, navigate);
         }
 
-        // Se o serviço não foi excluído pois já está vinculado à um agendamento, exibe uma mensagem de erro
+        // Se o serviço não foi excluído pois já está vinculado à um agendamento ou à um médico, exibe uma mensagem de erro
         else if (response.data == null) {
             // Alert de erro na exclusão do serviço
             confirmAlert({
                 title: 'Erro na exclusão',
-                message: 'Erro ao excluir, um ou mais agendamentos estão vinculados a esse serviço.',
+                message: 'Erro ao excluir, um ou mais agendamentos ou médicos estão vinculados a esse serviço.',
                 buttons: [
                     // Botão de voltar
                     {

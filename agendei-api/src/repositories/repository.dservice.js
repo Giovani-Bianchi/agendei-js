@@ -159,13 +159,20 @@ async function Editar(id_service, description) {
 async function VerificarServicos(id_service) {
     
     // Consulta para verificar se há algum agendamento com o id_service
-    let sql = "SELECT COUNT(*) AS total FROM appointments WHERE id_service = ?";
+    let sql = `SELECT 
+                (SELECT COUNT(*) 
+                FROM appointments 
+                WHERE id_service = ?) AS total_appointments,
+                
+                (SELECT COUNT(*) 
+                FROM doctors_services 
+                WHERE id_service = ?) AS total_doctors`;
 
     // Constante de resultado com o resultado da query
-    const [result] = await query(sql, [id_service]);
+    const [result] = await query(sql, [id_service, id_service]);
 
-    // Retorna verdadeiro se encontrar agendamentos, caso contrário falso
-    return result.total > 0;
+    // Verifica se algum dos valores é maior que 0
+    return result.total_appointments > 0 || result.total_doctors > 0;
 
 }
 

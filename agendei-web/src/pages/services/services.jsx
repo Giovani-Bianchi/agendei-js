@@ -42,7 +42,7 @@ function Services() {
     useEffect(() => {
         loadServices(setServices, navigate);
         filterServices(idService, setFiltroServices, navigate);
-    }, [idService])
+    }, [idService, services])
 
     return <div className='container-fluid mt-page p-4'>
 
