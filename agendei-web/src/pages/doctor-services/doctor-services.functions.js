@@ -21,7 +21,7 @@ export const clickEdit = (id_doctor, id_doctor_service, navigate) => {
  * Função de clickDelete - Passamos o id_doctor_service para identificar qual serviço do médico está querendo excluir, assim como o id_doctor, isso está vinculado ao clique do botão de Excluir
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clickDelete = (id_doctor_service, id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, navigate) => {
+export const clickDelete = (id_doctor_service, id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, setShowToast, setMessage, navigate) => {
 
     // Alert de confirmação para a exclusão do serviço do médico
     confirmAlert({
@@ -33,7 +33,7 @@ export const clickDelete = (id_doctor_service, id_service, id_doctor, confirmAle
                 label: 'Sim',
                 onClick: () => {
                     // Chamando a API para excluir o serviço do médico
-                    deleteDoctorService(id_doctor_service, id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, navigate);
+                    deleteDoctorService(id_doctor_service, id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, setShowToast, setMessage, navigate);
                 }
             },
 
@@ -52,7 +52,7 @@ export const clickDelete = (id_doctor_service, id_service, id_doctor, confirmAle
  * Função de deleteDoctorService
 ---------------------------------------------------------------------------------------------------------- */
 
-const deleteDoctorService = async (id_doctor_service, id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, navigate) => {
+const deleteDoctorService = async (id_doctor_service, id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, setShowToast, setMessage, navigate) => {
 
     // Tentar executar a requisição DELETE
     try {
@@ -63,6 +63,10 @@ const deleteDoctorService = async (id_doctor_service, id_service, id_doctor, con
         // Se o serviço do médico foi excluído, recarrega os serviços do médico de novo
         if (response.data) {
             loadServices(id_doctor, setDoctorName, setDoctorServices, navigate);
+
+            // Toast de sucesso
+            setMessage("Serviço do médico excluído com sucesso!");
+            setShowToast(true);
         }
 
         // Se o serviço do médico não foi excluído pois já está vinculado à um agendamento, exibe uma mensagem de erro

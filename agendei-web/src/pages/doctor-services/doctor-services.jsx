@@ -7,12 +7,15 @@
 import { useEffect, useState } from 'react';
 
 // Importações do React Router Dom
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // Importações do react-confirm-alert
 import { confirmAlert } from 'react-confirm-alert';
 // CSS do react-confirm-alert
 import 'react-confirm-alert/src/react-confirm-alert.css';
+
+// Importando os toasts
+import { toastSuccess } from "../../constants/toast.js";
 
 // Importando as funções de Doctors
 import { clickEdit, clickDelete, loadServices } from './doctor-services.functions.js';
@@ -29,6 +32,9 @@ function DoctorServices() {
     // Instanciando o navigate
     const navigate = useNavigate();
 
+    // Instanciando o location
+    const location = useLocation();
+
     // ID do médico vindo da URL
     const { id_doctor } = useParams();
 
@@ -42,6 +48,37 @@ function DoctorServices() {
     useEffect(() => {
         loadServices(id_doctor, setDoctorName, setDoctorServices, navigate);
     }, [])
+
+    // Toasts
+
+    // Variável de estado para controlar o toast
+    const [showToast, setShowToast] = useState(false);
+
+    // Variável de estado para armazenar a mensagem do toast
+    const [message, setMessage] = useState("");
+
+    // Exibe o toast sempre que o showToast for alterado para true ou se receber um location.state
+    useEffect(() => {
+
+        // Se receber uma mensagem do location.state, exibe o toast
+        if (location.state?.message) {
+            // Exibe o toast
+            toastSuccess(location.state.message)
+
+            // Remove a mensagem do estado ao finalizar
+            location.state.message = null;
+        }
+
+        // Se receber true do showToast, exibe o toast
+        if (showToast) {
+            // Exibe o toast
+            toastSuccess(message);
+
+            // Reseta o controle do toast após exibir
+            setShowToast(false);
+        }
+
+    }, [showToast, location.state]);
 
     return <div className='container-fluid mt-page p-4'>
     
@@ -80,7 +117,7 @@ function DoctorServices() {
 
                                 // Passando as props para os botões de ação, com funções de clique
                                 clickEdit={() => clickEdit(id_doctor, doc.id_doctor_service, navigate)}
-                                clickDelete={() => clickDelete(doc.id_doctor_service, doc.id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, navigate)}
+                                clickDelete={() => clickDelete(doc.id_doctor_service, doc.id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, setShowToast, setMessage, navigate)}
                             />
                         })
                     }

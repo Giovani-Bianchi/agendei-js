@@ -127,9 +127,19 @@ export const saveDoctorService = async (id_doctor_service, id_doctor, idService,
         await api.put("/doctors/" + id_doctor + "/services/" + id_doctor_service, json) : 
         await api.post("/doctors/" + id_doctor + "/services", json);
 
-        // Se conseguiu inserir o médico, redireciona o usuário para a lista
+        // Se conseguiu inserir o serviço do médico, redireciona o usuário para a lista
         if (response.data) {
-            navigate("/doctors/" + id_doctor + "/services");
+            if (id_doctor_service > 0) {
+                navigate("/doctors/" + id_doctor + "/services", { 
+                    state: { message: "Serviço do médico editado com sucesso!" } 
+                });
+            }
+
+            else {
+                navigate("/doctors/" + id_doctor + "/services", { 
+                    state: { message: "Serviço do médico salvo com sucesso!" } 
+                });
+            }
         }
 
     }
