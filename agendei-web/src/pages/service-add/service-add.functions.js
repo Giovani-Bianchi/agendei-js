@@ -27,7 +27,17 @@ export const saveService = async (id_service, service, navigate) => {
 
         // Se conseguiu inserir o serviço, redireciona o usuário para a lista
         if (response.data) {
-            navigate("/services");
+            if (id_service > 0) {
+                navigate("/services", { 
+                    state: { message: "Serviço editado com sucesso!" } 
+                });
+            }
+
+            else {
+                navigate("/services", { 
+                    state: { message: "Serviço salvo com sucesso!" } 
+                });
+            }
         }
 
     }

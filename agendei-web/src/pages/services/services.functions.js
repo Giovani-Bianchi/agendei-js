@@ -21,7 +21,7 @@ export const clickEdit = (id_service, navigate) => {
  * Função de clickDelete - Passamos o id_service para identificar qual serviço está querendo excluir, isso está vinculado ao clique do botão de Excluir
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clickDelete = (id_service, confirmAlert, idService, setFiltroServices, navigate, filterServices) => {
+export const clickDelete = (id_service, confirmAlert, idService, setFiltroServices, navigate, setShowToast, setMessage, filterServices) => {
 
     // Alert de confirmação para a exclusão do serviço
     confirmAlert({
@@ -33,7 +33,7 @@ export const clickDelete = (id_service, confirmAlert, idService, setFiltroServic
                 label: 'Sim',
                 onClick: () => {
                     // Chamando a API para excluir o serviço
-                    deleteService(id_service, confirmAlert, idService, setFiltroServices, navigate, filterServices);
+                    deleteService(id_service, confirmAlert, idService, setFiltroServices, navigate, setShowToast, setMessage, filterServices);
                 }
             },
 
@@ -52,7 +52,7 @@ export const clickDelete = (id_service, confirmAlert, idService, setFiltroServic
  * Função de deleteService
 ---------------------------------------------------------------------------------------------------------- */
 
-const deleteService = async (id_service, confirmAlert, idService, setFiltroServices, navigate, filterServices) => {
+const deleteService = async (id_service, confirmAlert, idService, setFiltroServices, navigate, setShowToast, setMessage, filterServices) => {
 
     // Tentar executar a requisição DELETE
     try {
@@ -63,6 +63,10 @@ const deleteService = async (id_service, confirmAlert, idService, setFiltroServi
         // Se o serviço foi excluído, recarrega os serviços de novo
         if (response.data) {
             filterServices(idService, setFiltroServices, navigate);
+
+            // Toast de sucesso
+            setMessage("Serviço excluído com sucesso!");
+            setShowToast(true);
         }
 
         // Se o serviço não foi excluído pois já está vinculado à um agendamento ou à um médico, exibe uma mensagem de erro
