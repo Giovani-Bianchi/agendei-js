@@ -6,6 +6,9 @@
 // Importações do react-router-dom
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+// Importações do react-toastify
+import { Slide, ToastContainer } from "react-toastify";
+
 // Importando os componentes
 import Login from "./pages/login/login.jsx";
 import Register from "./pages/register/register.jsx";
@@ -77,6 +80,23 @@ function Rotas() {
             <Route path="/doctors/:id_doctor/services/edit/:id_doctor_service" element={<DoctorServicesAdd />} />
 
         </Routes>
+
+        {/* ToastContainer */}
+        <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            stacked
+            transition={Slide}
+        />
+
     </BrowserRouter>
 
 }

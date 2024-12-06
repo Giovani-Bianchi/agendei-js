@@ -12,6 +12,9 @@ import React from 'react'
 // Importando o createRoot do react
 import { createRoot } from 'react-dom/client'
 
+// Importação do CSS ro react-toastify
+import 'react-toastify/dist/ReactToastify.css';
+
 // Importando os componentes
 import Rotas from "./rotas.jsx";
 
