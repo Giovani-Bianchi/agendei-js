@@ -39,5 +39,8 @@ const db = new SQLite.Database("./src/database/banco.db", sqlite3.OPEN_READWRITE
 
 });
 
+// Habilita o suporte a foreign keys
+db.run('PRAGMA foreign_keys = ON');
+
 // * Exportando o db e a query
 export { db, query };

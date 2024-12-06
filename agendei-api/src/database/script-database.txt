@@ -30,7 +30,7 @@ create table doctors_services (
 	id_service INTEGER,
     	price      DECIMAL(9,2),
 	
-	foreign key (id_doctor) references doctors(id_doctor),
+	foreign key (id_doctor) references doctors(id_doctor) ON DELETE CASCADE,
 	foreign key (id_service) references services(id_service)	
 );
 
