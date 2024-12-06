@@ -42,7 +42,9 @@ export const executeLogin = async (email, password, setMsg, navigate) => {
             api.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
 
             // Irá redirecionar o usuário para a tela de Agendamentos
-            navigate("/appointments")
+            navigate("/appointments", { 
+                state: { message: "Login executado com sucesso!" } 
+            });
         }
 
         // Caso contrário, se não existir o objeto 'data', significa que o login falhou, então é passado uma mensagem genérica de erro
