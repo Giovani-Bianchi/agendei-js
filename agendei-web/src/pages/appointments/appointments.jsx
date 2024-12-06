@@ -7,12 +7,15 @@
 import { useEffect, useState } from 'react';
 
 // Importações do React Router Dom
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // Importações do react-confirm-alert
 import { confirmAlert } from 'react-confirm-alert';
 // CSS do react-confirm-alert
 import 'react-confirm-alert/src/react-confirm-alert.css';
+
+// Importando os toasts
+import { toastSuccess } from "../../constants/toast.js";
 
 // Importando as funções de Appointments
 import { clickEdit, clickDelete, loadDoctors, loadAppointments, changeDoctor, clearInputs } from './appointments.functions.js';
@@ -28,6 +31,9 @@ function Appointments() {
 
     // Instanciando o navigate
     const navigate = useNavigate();
+
+    // Instanciando o location
+    const location = useLocation();
 
     // Variável de estado para que toda vez que ela seja alterada, a página seja recarregada para listar os appointments
     const [appointments, setAppointments] = useState([]);
@@ -49,6 +55,37 @@ function Appointments() {
         loadDoctors(setDoctors, navigate);
         loadAppointments(idDoctor, dtStart, dtEnd, setAppointments, navigate);
     }, [idDoctor, dtStart, dtEnd])
+
+    // Toasts
+
+    // Variável de estado para controlar o toast
+    const [showToast, setShowToast] = useState(false);
+
+    // Variável de estado para armazenar a mensagem do toast
+    const [message, setMessage] = useState("");
+
+    // Exibe o toast sempre que o showToast for alterado para true ou se receber um location.state
+    useEffect(() => {
+
+        // Se receber uma mensagem do location.state, exibe o toast
+        if (location.state?.message) {
+            // Exibe o toast
+            toastSuccess(location.state.message)
+
+            // Remove a mensagem do estado ao finalizar
+            location.state.message = null;
+        }
+
+        // Se receber true do showToast, exibe o toast
+        if (showToast) {
+            // Exibe o toast
+            toastSuccess(message);
+
+            // Reseta o controle do toast após exibir
+            setShowToast(false);
+        }
+
+    }, [showToast, location.state]);
 
     return <div className='container-fluid mt-page p-4'>
     
@@ -127,7 +164,7 @@ function Appointments() {
 
                                 // Passando as props para os botões de ação, com funções de clique
                                 clickEdit={() => clickEdit(ap.id_appointment, navigate)}
-                                clickDelete={() => clickDelete(ap.id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate)}
+                                clickDelete={() => clickDelete(ap.id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, setShowToast, setMessage, navigate)}
                             />
                         })
                     }

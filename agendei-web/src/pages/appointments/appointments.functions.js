@@ -21,7 +21,7 @@ export const clickEdit = (id_appointment, navigate) => {
  * Função de clickDelete - Passamos o id_appointment para identificar qual agendamento está querendo excluir, isso está vinculado ao clique do botão de Excluir
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clickDelete = (id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate) => {
+export const clickDelete = (id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, setShowToast, setMessage, navigate) => {
 
     // Alert de confirmação para a exclusão do agendamento
     confirmAlert({
@@ -33,7 +33,7 @@ export const clickDelete = (id_appointment, confirmAlert, idDoctor, dtStart, dtE
                 label: 'Sim',
                 onClick: () => {
                     // Chamando a API para excluir o agendamento
-                    deleteAppointment(id_appointment, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate);
+                    deleteAppointment(id_appointment, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, setShowToast, setMessage, navigate);
                 }
             },
 
@@ -52,7 +52,7 @@ export const clickDelete = (id_appointment, confirmAlert, idDoctor, dtStart, dtE
  * Função de deleteAppointment
 ---------------------------------------------------------------------------------------------------------- */
 
-const deleteAppointment = async (id, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, navigate) => {
+const deleteAppointment = async (id, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, setShowToast, setMessage, navigate) => {
 
     // Tentar executar a requisição DELETE
     try {
@@ -63,6 +63,10 @@ const deleteAppointment = async (id, idDoctor, dtStart, dtEnd, setAppointments, 
         // Se o agendamento foi excluído, recarrega os agendamentos de novo
         if (response.data) {
             loadAppointments(idDoctor, dtStart, dtEnd, setAppointments, navigate);
+
+            // Toast de sucesso
+            setMessage("Agendamento excluído com sucesso!");
+            setShowToast(true);
         }
 
     }

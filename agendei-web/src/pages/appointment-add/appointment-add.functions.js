@@ -211,9 +211,19 @@ export const saveAppointment = async (idUser, idDoctor, idService, bookingDate, 
         await api.put("/admin/appointments/" + id_appointment, json) : 
         await api.post("/admin/appointments", json);
 
-        // Se conseguiu inserir o agendamento, redireciona o usuário para a lista
+        // Se conseguiu inserir ou editar o agendamento, redireciona o usuário para a lista
         if (response.data) {
-            navigate("/appointments");
+            if (id_appointment > 0) {
+                navigate("/appointments", { 
+                    state: { message: "Agendamento editado com sucesso!" } 
+                });
+            }
+
+            else {
+                navigate("/appointments", { 
+                    state: { message: "Agendamento salvo com sucesso!" } 
+                });
+            }
         }
 
     }
