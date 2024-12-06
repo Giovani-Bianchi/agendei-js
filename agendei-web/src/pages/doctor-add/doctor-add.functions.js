@@ -29,7 +29,17 @@ export const saveDoctor = async (id_doctor, doctor, specialty, gender, navigate)
 
         // Se conseguiu inserir o médico, redireciona o usuário para a lista
         if (response.data) {
-            navigate("/doctors");
+            if (id_doctor > 0) {
+                navigate("/doctors", { 
+                    state: { message: "Médico editado com sucesso!" } 
+                });
+            }
+
+            else {
+                navigate("/doctors", { 
+                    state: { message: "Médico salvo com sucesso!" } 
+                });
+            }
         }
 
     }

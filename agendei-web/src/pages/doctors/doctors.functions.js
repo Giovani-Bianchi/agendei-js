@@ -32,7 +32,7 @@ export const clickEdit = (id_doctor, navigate) => {
  * Função de clickDelete - Passamos o id_doctor para identificar qual médico está querendo excluir, isso está vinculado ao clique do botão de Excluir
 ---------------------------------------------------------------------------------------------------------- */
 
-export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {
+export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, setShowToast, setMessage, navigate) => {
 
     // Alert de confirmação para a exclusão do médico
     confirmAlert({
@@ -44,7 +44,7 @@ export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors,
                 label: 'Sim',
                 onClick: () => {
                     // Chamando a API para excluir o médico
-                    deleteDoctor(id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate);
+                    deleteDoctor(id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, setShowToast, setMessage, navigate);
                 }
             },
 
@@ -63,7 +63,7 @@ export const clickDelete = (id_doctor, confirmAlert, idDoctor, setFiltroDoctors,
  * Função de deleteDoctor
 ---------------------------------------------------------------------------------------------------------- */
 
-const deleteDoctor = async (id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, navigate) => {
+const deleteDoctor = async (id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, setShowToast, setMessage, navigate) => {
 
     // Tentar executar a requisição DELETE
     try {
@@ -74,6 +74,10 @@ const deleteDoctor = async (id_doctor, confirmAlert, idDoctor, setFiltroDoctors,
         // Se o médico foi excluído, recarrega os médicos de novo
         if (response.data) {
             filterDoctors(idDoctor, setFiltroDoctors, navigate);
+
+            // Toast de sucesso
+            setMessage("Médico excluído com sucesso!");
+            setShowToast(true);
         }
 
         // Se o médico não foi excluído pois já está vinculado à um agendamento, exibe uma mensagem de erro
