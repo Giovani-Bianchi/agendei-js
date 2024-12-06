@@ -150,9 +150,11 @@ function Appointments() {
 
                 {/* Corpo da Tabela - Loop carregando várias vezes o componente */}
                 <tbody>
-                    {
-                        appointments.map((ap) => {
-                            return <Appointment key={ap.id_appointment}
+                    
+                    {/* Se o array appointments possuir valores, renderiza a tabela, se não, renderiza a mensagem de que não há agendamentos */}
+                    {appointments.length > 0 ? (
+                        appointments.map((ap) => (
+                            <Appointment key={ap.id_appointment}
                                 // Passando as props do appointment
                                 id_appointment={ap.id_appointment}
                                 user={ap.user}
@@ -164,10 +166,19 @@ function Appointments() {
 
                                 // Passando as props para os botões de ação, com funções de clique
                                 clickEdit={() => clickEdit(ap.id_appointment, navigate)}
-                                clickDelete={() => clickDelete(ap.id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, setShowToast, setMessage, navigate)}
+                                clickDelete={() => clickDelete(ap.id_appointment, confirmAlert, idDoctor, dtStart, dtEnd, setAppointments, loadAppointments, setShowToast,setMessage, navigate)}
                             />
-                        })
-                    }
+                        ))
+                    ) : 
+                    
+                    (
+                        <tr>
+                            <td colSpan="6" className='text-center'>
+                                Nenhum agendamento cadastrado
+                            </td>
+                        </tr>
+                    )}
+                    
                 </tbody>
 
             </table>
