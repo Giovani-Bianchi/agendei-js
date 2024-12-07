@@ -137,9 +137,11 @@ function Doctors() {
 
                 {/* Corpo da Tabela - Loop carregando várias vezes o componente */}
                 <tbody>
-                    {
-                        filtroDoctors.map((doc) => {
-                            return <Doctor key={doc.id_doctor}
+                    
+                    {/* Se o array filtroDoctors possuir valores, renderiza a tabela, se não, renderiza a mensagem de que não há médicos */}
+                    {filtroDoctors.length > 0 ? (
+                        filtroDoctors.map((doc) => (
+                            <Doctor key={doc.id_doctor}
                                 // Passando as props do doctor
                                 id_doctor={doc.id_doctor}
                                 doctor={doc.name}
@@ -150,8 +152,17 @@ function Doctors() {
                                 clickEdit={() => clickEdit(doc.id_doctor, navigate)}
                                 clickDelete={() => clickDelete(doc.id_doctor, confirmAlert, idDoctor, setFiltroDoctors, filterDoctors, setShowToast, setMessage, navigate)}
                             />
-                        })
-                    }
+                        ))
+                    ) : 
+                    
+                    (
+                        <tr>
+                            <td colSpan="4" className='text-center'>
+                                Nenhum médico cadastrado
+                            </td>
+                        </tr>
+                    )}
+                    
                 </tbody>
 
             </table>
