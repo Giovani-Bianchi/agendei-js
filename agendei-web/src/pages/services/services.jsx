@@ -135,9 +135,11 @@ function Services() {
 
                 {/* Corpo da Tabela - Loop carregando várias vezes o componente */}
                 <tbody>
-                    {
-                        filtroServices.map((ser) => {
-                            return <Service key={ser.id_service}
+                    
+                    {/* Se o array filtroServices possuir valores, renderiza a tabela, se não, renderiza a mensagem de que não há serviços */}
+                    {filtroServices.length > 0 ? (
+                        filtroServices.map((ser) => (
+                            <Service key={ser.id_service}
                                 // Passando as props do serviço
                                 id_service={ser.id_service}
                                 service={ser.description}
@@ -146,8 +148,17 @@ function Services() {
                                 clickEdit={() => clickEdit(ser.id_service, navigate)}
                                 clickDelete={() => clickDelete(ser.id_service, confirmAlert, idService, setFiltroServices, navigate, setShowToast, setMessage, filterServices)}
                             />
-                        })
-                    }
+                        ))
+                    ) : 
+                    
+                    (
+                        <tr>
+                            <td colSpan="2" className='text-center'>
+                                Nenhum serviço cadastrado
+                            </td>
+                        </tr>
+                    )}
+                    
                 </tbody>
 
             </table>
