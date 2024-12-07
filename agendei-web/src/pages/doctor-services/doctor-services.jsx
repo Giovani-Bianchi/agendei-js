@@ -107,9 +107,11 @@ function DoctorServices() {
 
                 {/* Corpo da Tabela - Loop carregando várias vezes o componente */}
                 <tbody>
-                    {
-                        doctorServices.map((doc) => {
-                            return <DoctorService key={doc.id_doctor_service}
+
+                    {/* Se o array doctorServices possuir valores, renderiza a tabela, se não, renderiza a mensagem de que não há serviços do médico */}
+                    {doctorServices.length > 0 ? (
+                        doctorServices.map((doc) => (
+                            <DoctorService key={doc.id_doctor_service}
                                 // Passando as props do doctor
                                 id_doctor_service={doc.id_doctor_service}
                                 service={doc.description}
@@ -119,8 +121,17 @@ function DoctorServices() {
                                 clickEdit={() => clickEdit(id_doctor, doc.id_doctor_service, navigate)}
                                 clickDelete={() => clickDelete(doc.id_doctor_service, doc.id_service, id_doctor, confirmAlert, setDoctorName, setDoctorServices, loadServices, setShowToast, setMessage, navigate)}
                             />
-                        })
-                    }
+                        ))
+                    ) : 
+                    
+                    (
+                        <tr>
+                            <td colSpan="3" className='text-center'>
+                                Nenhum serviço do médico cadastrado
+                            </td>
+                        </tr>
+                    )}
+
                 </tbody>
 
             </table>

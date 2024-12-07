@@ -175,6 +175,11 @@ async function ListarServicos(id_doctor) {
     // Contante de serviço para listar os serviços prestados por determinado médico, com base no id_doctor que está substituindo o parâmetro ? na consulta SQL
     const serv = await query(sql, [id_doctor]);
 
+    // Caso não haja serviços, retorna um array vazio
+    if (serv.length === 0) {
+        return null;
+    }
+
     // Retornando a lista de serviços do médico
     return serv;
 
