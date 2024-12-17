@@ -19,7 +19,13 @@ import { Form, Logo, DoctorImage } from './login.styles.js';
 import logo from "../../assets/logo.png";
 import fundo from "../../assets/fundo.png";
 
+// Importação do useAuth do AuthContext
+import { useAuth } from "../../contexts/auth-context.jsx";
+
 function Login() {
+
+    // Constante de login do useAuth para armazenar os dados do usuário no localStorage
+    const { login } = useAuth();
 
     // Variáveis de estado para armazenar os dados inseridos pelo usuário nos inputs de email e senha
     const [email, setEmail] = useState("giovaniwhb@gmail.com");
@@ -69,7 +75,7 @@ function Login() {
 
                 {/* Botão de Login */}
                 <div className='mt-3'>
-                    <button type="button" onClick={() => executeLogin(email, password, setMsg, navigate)} className='btn btn-primary w-100'>Login</button>
+                    <button type="button" onClick={() => executeLogin(email, password, setMsg, navigate, login)} className='btn btn-primary w-100'>Login</button>
                 </div>
 
                 {/* Só irá exibir o alert caso ocorra um erro, ou seja, caso a variável 'msg' tenha algum conteúdo dentro dela */}

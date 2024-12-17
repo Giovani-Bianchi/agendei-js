@@ -12,8 +12,8 @@ import { Logo } from './navbar.styles.js';
 // Importações das Imagens
 import logo from "../../assets/logo-white.png";
 
-// Importação da API com Axios
-import api from '../../constants/api.js';
+// Importação do useAuth com o método de logout
+import { useAuth } from '../../contexts/auth-context.jsx';
 
 function Navbar() {
 
@@ -23,20 +23,17 @@ function Navbar() {
     // Instanciando o location
     const location = useLocation();
 
+    // Constante de logout do useAuth para deletar os dados do localStorage
+    const { logout } = useAuth();
+    
     // Função de Logout
     function Logout() {
 
-        // Remover os localStorage Items
-        localStorage.removeItem('sessionToken');
-        localStorage.removeItem('sessionId');
-        localStorage.removeItem('sessionEmail');
-        localStorage.removeItem('sessionName');
-        
-        // Remover o cabeçalho contendo o Token
-        api.defaults.headers.common['Authorization'] = "";
+        // Realiza o logout vindo do authContext
+        logout();
 
         // Redirecionando o usuário para o Login
-        navigate('/');
+        navigate('/login');
 
     }
 
@@ -44,7 +41,7 @@ function Navbar() {
         <div className="container-fluid">
 
             {/* Logo do Agendei */}
-            <Link className='navbar-brand' to="/appointments">
+            <Link className='navbar-brand' to="/">
                 <Logo src={logo} alt="Logo do Agendei" />
             </Link>
 
@@ -60,7 +57,7 @@ function Navbar() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
                     {/* Link para a Pagina de Agendamentos */}
                     <li className="nav-item">
-                        <Link className={`nav-link ${location.pathname === "/appointments" ? "active" : ""}`} to="/appointments">Agendamentos</Link>
+                        <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">Agendamentos</Link>
                     </li>
 
                     {/* Link para a Pagina de Médicos */}

@@ -10,7 +10,7 @@ import api from "../../constants/api.js";
  * Função Assíncrona para Executar o Login
 ---------------------------------------------------------------------------------------------------------- */
 
-export const executeLogin = async (email, password, setMsg, navigate) => {
+export const executeLogin = async (email, password, setMsg, navigate, login) => {
 
     // Zerando a mensagem de erro, assim quando o usuário clicar novamente no botão de Login, já que a variável de mensagem foi zerada, o Alert irá sumir
     setMsg("");
@@ -26,23 +26,11 @@ export const executeLogin = async (email, password, setMsg, navigate) => {
 
         // Se no response existir o objeto 'data', significa que o login foi bem sucedido, então guardamos os dados no LocalStorage e redirecionamos o usuário
         if (response.data) {
-            // Incluindo o item 'sessionToken' dentro do localStorage com o token recebido da API
-            localStorage.setItem("sessionToken", response.data.token);
-
-            // Incluindo o item 'sessionId' dentro do localStorage com o id do admin recebido da API
-            localStorage.setItem("sessionId", response.data.id_admin);
-
-            // Incluindo o item 'sessionEmail' dentro do localStorage com o email recebido da API
-            localStorage.setItem("sessionEmail", response.data.email);
-
-            // Incluindo o item 'sessionName' dentro do localStorage com o nome recebido da API
-            localStorage.setItem("sessionName", response.data.name);
-
-            // Salvando o token vindo da API para um header Authorization com o nome de "Bearer" dentro do Axios, para que todas as requisições futuras tenham o token já inseridos dentro delas, sem a necessidade de enviar novamente o token em toda requisição mesmo já estando logado
-            api.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
+            // Usando o método login do useAuth para armazenar as informações de Login no AuthContext
+            login(response.data.token, response.data.name, response.data.id_admin, response.data.email);
 
             // Irá redirecionar o usuário para a tela de Agendamentos
-            navigate("/appointments", { 
+            navigate("/", { 
                 state: { message: "Login executado com sucesso!" } 
             });
         }

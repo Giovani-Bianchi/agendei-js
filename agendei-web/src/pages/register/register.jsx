@@ -105,7 +105,7 @@ function Register() {
                     <span className='me-1'>Já tenho uma conta.</span>
 
                     {/* Componente de Link do React Router Dom - O to seria o href do Link */}
-                    <Link to="/">Acessar agora.</Link>
+                    <Link to="/login">Acessar agora.</Link>
                 </div>
 
             </Form>
