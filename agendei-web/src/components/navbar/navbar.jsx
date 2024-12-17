@@ -88,8 +88,6 @@ function Navbar() {
 
                             {/* Itens do Dropdown Menu */}
                             <ul className="dropdown-menu dropdown-menu-end">
-                                <li><Link className="dropdown-item" to="#">Meu Perfil</Link></li>
-                                <li><hr className="dropdown-divider"/></li>
                                 <li><button type='button' className="dropdown-item" onClick={Logout}>Desconectar</button></li>
                             </ul>
                         </div>
