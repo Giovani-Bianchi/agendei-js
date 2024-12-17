@@ -80,16 +80,24 @@ function AbaHome(props) {
 
         {/* Lista de médicos, doc é o objeto que irá capturar os dados através do id_doctor. Sempre que renderizar a lista, irá chamar a função passando o objeto 'doc'
         que contém o médico específico, chamando cada vez para cada médico na lista, como um foreach. 'item' é o que acessa os médicos na renderização dos itens. */}
-        <FlatList data={doctors} keyExtractor={(doc) => doc.id_doctor} showsVerticalScrollIndicator={false} renderItem={({item}) => {
-            return <Doctor id_doctor={item.id_doctor}
-            name={item.name} /* Nome do médico */
-            icon={item.icon} /* Se o icon vindo da fonte de dados possuir o valor de "M", usar o ícone "male", senão usar o ícone "female" */
-            specialty={item.specialty} /* Especialidade do médico */
+        {doctors.length > 0 ? (
+            <FlatList data={doctors} keyExtractor={(doc) => doc.id_doctor} showsVerticalScrollIndicator={false} renderItem={({item}) => {
+                    <Doctor id_doctor={item.id_doctor}
+                        name={item.name} /* Nome do médico */
+                        icon={item.icon} /* Se o icon vindo da fonte de dados possuir o valor de "M", usar o ícone "male", senão usar o ícone "female" */
+                        specialty={item.specialty} /* Especialidade do médico */
+            
+                        // Ao clicar no componente de Doctor, irá redirecionar para a página de serviços do médico carregando a função 'ClickDoctor'
+                        onPress={ClickDoctor}
+                    />
+                }}
+            />
+        ) : 
 
-            // Ao clicar no componente de Doctor, irá redirecionar para a página de serviços do médico carregando a função 'ClickDoctor'
-            onPress={ClickDoctor}
-            /> 
-        }} />
+        (
+            // Se a lista de médicos estiver vazia, exibe um texto indicando que não há médicos disponíveis
+            <Text style={styles.emptyText}>Nenhum médico encontrado</Text>
+        )}
 
     </View>
 

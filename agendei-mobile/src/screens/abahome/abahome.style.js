@@ -22,4 +22,15 @@ export const styles = {
         marginLeft: 10
     },
 
+    // Texto de empty state
+    emptyText: {
+        textAlign: "center",
+        fontWeight: "bold",
+        marginTop: 20,
+        paddingTop: 10,
+
+        borderTopWidth: 1,
+        borderColor: COLORS.gray2
+    }
+
 }
