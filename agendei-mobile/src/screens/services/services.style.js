@@ -37,4 +37,11 @@ export const styles = {
         marginTop: 3
     },
 
+    // Texto de empty state
+    emptyText: {
+        textAlign: "center",
+        fontWeight: "bold",
+        marginTop: 20,
+    }
+
 }

@@ -91,15 +91,23 @@ function Services(props) {
         </View>
 
         {/* Lista de serviços dos médicos */}
-        <FlatList data={doctorServices} keyExtractor={(serv) => serv.id_service} showsVerticalScrollIndicator={false} renderItem={({item}) => {
-            return <Service id_service={item.id_service}
-            description={item.description} 
-            price={item.price}
+        {doctorServices.length > 0 ? (
+                <FlatList data={doctorServices} keyExtractor={(serv) => serv.id_service} showsVerticalScrollIndicator={false} renderItem={({item}) => {
+                    return <Service id_service={item.id_service}
+                        description={item.description} 
+                        price={item.price}
 
-            // Ao clicar no componente de Serviço, irá redirecionar para a página de calendário carregando a função 'ClickService'
-            onPress={ClickService}
+                        // Ao clicar no componente de Serviço, irá redirecionar para a página de calendário carregando a função 'ClickService'
+                        onPress={ClickService}
+                    />
+                }} 
             />
-        }} />
+        ) : 
+
+        (
+            // Se a lista de serviços do médico estiver vazia, exibe um texto indicando que não há serviços do médico disponíveis
+            <Text style={styles.emptyText}>Nenhum serviço do médico encontrado</Text>
+        )}
 
     </View>
 
