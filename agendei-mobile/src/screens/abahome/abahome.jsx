@@ -82,7 +82,7 @@ function AbaHome(props) {
         que contém o médico específico, chamando cada vez para cada médico na lista, como um foreach. 'item' é o que acessa os médicos na renderização dos itens. */}
         {doctors.length > 0 ? (
             <FlatList data={doctors} keyExtractor={(doc) => doc.id_doctor} showsVerticalScrollIndicator={false} renderItem={({item}) => {
-                    <Doctor id_doctor={item.id_doctor}
+                    return <Doctor id_doctor={item.id_doctor}
                         name={item.name} /* Nome do médico */
                         icon={item.icon} /* Se o icon vindo da fonte de dados possuir o valor de "M", usar o ícone "male", senão usar o ícone "female" */
                         specialty={item.specialty} /* Especialidade do médico */

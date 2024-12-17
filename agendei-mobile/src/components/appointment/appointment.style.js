@@ -64,6 +64,7 @@ export const styles = {
     
     // Container do Botão
     containerButton: {
+        width: "50%",
         marginTop: 5
     },
 

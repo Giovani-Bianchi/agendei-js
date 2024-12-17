@@ -98,7 +98,7 @@ function AbaCalendar() {
         {/* Lista de consultas marcadas no calendário */}
         {appointments.length > 0 ? (
             <FlatList data={appointments} keyExtractor={(appoint) => appoint.id_appointment} showsVerticalScrollIndicator={false} renderItem={({item}) => {
-                <Appointment id_appointment={item.id_appointment}
+                return <Appointment id_appointment={item.id_appointment}
                         doctor={item.doctor} 
                         service={item.service} 
                         specialty={item.specialty}

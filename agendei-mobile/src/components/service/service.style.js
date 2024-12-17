@@ -24,6 +24,7 @@ export const styles = {
 
     // Container do botão
     containerButton: {
+        width: "30%",
         marginTop: 5
     },
 
