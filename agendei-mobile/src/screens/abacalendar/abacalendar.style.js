@@ -13,12 +13,15 @@ export const styles = {
         flex: 1,
     },
 
-    // Texto da AbaCalendar
-    text: {
-        fontSize: FONT_SIZE.md,
-        color: COLORS.gray1,
-        marginBottom: 15,
-        marginLeft: 10
-    },
+    // Texto de empty state
+    emptyText: {
+        textAlign: "center",
+        fontWeight: "bold",
+        marginTop: 20,
+        paddingTop: 10,
+
+        borderTopWidth: 1,
+        borderColor: COLORS.gray2
+    }
 
 }

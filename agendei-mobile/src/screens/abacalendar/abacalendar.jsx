@@ -9,7 +9,7 @@ import { styles } from './abacalendar.style.js';
 import Appointment from '../../components/appointment/appointment.jsx';
 
 // Importações do react-native
-import { Alert, FlatList, View } from "react-native";
+import { Alert, FlatList, Text, View } from "react-native";
 
 // Importações do react
 import { useEffect, useState } from 'react';
@@ -96,18 +96,26 @@ function AbaCalendar() {
     return <View style={styles.container}>
 
         {/* Lista de consultas marcadas no calendário */}
-        <FlatList data={appointments} keyExtractor={(appoint) => appoint.id_appointment} showsVerticalScrollIndicator={false} renderItem={({item}) => {
-            return <Appointment  id_appointment={item.id_appointment}
-            doctor={item.doctor} 
-            service={item.service} 
-            specialty={item.specialty}
-            bookingDate={item.booking_date}
-            bookingHour={item.booking_hour}
-            
-            // Ao pressionar o botão,  chama a função DeleteAppointment com o ID da reserva
-            onPress={DeleteAppointment}
+        {appointments.length > 0 ? (
+            <FlatList data={appointments} keyExtractor={(appoint) => appoint.id_appointment} showsVerticalScrollIndicator={false} renderItem={({item}) => {
+                <Appointment id_appointment={item.id_appointment}
+                        doctor={item.doctor} 
+                        service={item.service} 
+                        specialty={item.specialty}
+                        bookingDate={item.booking_date}
+                        bookingHour={item.booking_hour}
+                        
+                        // Ao pressionar o botão,  chama a função DeleteAppointment com o ID da reserva
+                        onPress={DeleteAppointment}
+                    />
+                }} 
             />
-        }} />
+        ) : 
+
+        (
+            // Se a lista de reservas estiver vazia, exibe um texto indicando que não há reservas feitas
+            <Text style={styles.emptyText}>Nenhuma reserva encontrada</Text>
+        )}
 
     </View>
 
