@@ -13,7 +13,7 @@ import { Logo } from './navbar.styles.js';
 import logo from "../../assets/logo-white.png";
 
 // Importação do useAuth com o método de logout
-import { useAuth } from '../../contexts/auth-context.jsx';
+import { useAuth } from '../../contexts/authContext.jsx';
 
 function Navbar() {
 

@@ -7,7 +7,7 @@
 import { createRoot } from 'react-dom/client'
 
 // Importando o AuthProvider
-import { AuthProvider } from './contexts/auth-context.jsx';
+import { AuthProvider } from './contexts/authContext.jsx';
 
 // Importando o componente de AppRoutes
 import { AppRoutes } from "./routes.jsx";

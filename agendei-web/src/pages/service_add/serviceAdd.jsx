@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Importando as funções do Service Add
-import { saveService, loadService } from "./service-add.functions.js";
+import { saveService, loadService } from "./serviceAdd.functions.js";
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";

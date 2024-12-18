@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Importando as funções do Appointment Add
-import { loadUsers, loadDoctors, loadServices, saveAppointment, doctorChange } from "./appointment-add.functions.js";
+import { loadUsers, loadDoctors, loadServices, saveAppointment, doctorChange } from "./appointmentAdd.functions.js";
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
@@ -192,7 +192,7 @@ function AppointmentAdd() {
                 {/* Botões */}
                 <div className="col-12 mt-4">
                     <div className="d-flex justify-content-end gap-2">
-                        <Link to="/appointments" className="btn btn-outline-primary">Cancelar</Link>
+                        <Link to="/" className="btn btn-outline-primary">Cancelar</Link>
                         <button type="button" className="btn btn-primary" disabled={!isFormValid} onClick={() => saveAppointment(idUser, idDoctor, idService, bookingDate, bookingHour, id_appointment, navigate)}>Salvar Dados</button>
                     </div>
                 </div>

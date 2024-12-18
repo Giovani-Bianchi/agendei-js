@@ -20,7 +20,7 @@ import logo from "../../assets/logo.png";
 import fundo from "../../assets/fundo.png";
 
 // Importação do useAuth do AuthContext
-import { useAuth } from "../../contexts/auth-context.jsx";
+import { useAuth } from "../../contexts/authContext.jsx";
 
 function Login() {
 

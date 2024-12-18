@@ -7,22 +7,22 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 // Importação do useAuth
-import { useAuth } from "./contexts/auth-context.jsx";
+import { useAuth } from "./contexts/authContext.jsx";
 
 // Importação do GlobalLayout
-import GlobalLayout from "./global-layout.jsx";
+import GlobalLayout from "./globalLayout.jsx";
 
 // Importando os componentes
 import Login from "./pages/login/login.jsx";
 import Register from "./pages/register/register.jsx";
 import Appointments from "./pages/appointments/appointments.jsx";
-import AppointmentAdd from "./pages/appointment-add/appointment-add.jsx";
+import AppointmentAdd from "./pages/appointment_add/appointmentAdd.jsx";
 import Doctors from "./pages/doctors/doctors.jsx";
-import DoctorAdd from "./pages/doctor-add/doctor-add.jsx";
+import DoctorAdd from "./pages/doctor_add/doctorAdd.jsx";
 import Services from "./pages/services/services.jsx";
-import ServiceAdd from "./pages/service-add/service-add.jsx";
-import DoctorServices from "./pages/doctor-services/doctor-services.jsx";
-import DoctorServicesAdd from "./pages/doctor-services-add/doctor-services-add.jsx";
+import ServiceAdd from "./pages/service_add/serviceAdd.jsx";
+import DoctorServices from "./pages/doctor_services/doctorServices.jsx";
+import DoctorServicesAdd from "./pages/doctor_services_add/doctorServicesAdd.jsx";
 
 // Função ProtectedRoute que verifica se o usuário está autenticado
 export function ProtectedRoute({ children }) {

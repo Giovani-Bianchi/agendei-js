@@ -18,14 +18,14 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { toastSuccess } from "../../constants/toast.js";
 
 // Importando as funções de Doctors
-import { clickEdit, clickDelete, loadServices } from './doctor-services.functions.js';
+import { clickEdit, clickDelete, loadServices } from './doctorServices.functions.js';
 
 // Importando os Styled Components do Componente de Doctors
-import { StyledLink, ThButtons } from './doctor-services.styles.js';
+import { StyledLink, ThButtons } from './doctorServices.styles.js';
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
-import DoctorService from '../../components/doctor-service/doctor-service.jsx';
+import DoctorService from '../../components/doctor_service/doctorService.jsx';
 
 function DoctorServices() {
 

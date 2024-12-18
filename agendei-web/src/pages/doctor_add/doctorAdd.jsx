@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Importando as funções do Doctor Add
-import { saveDoctor, loadDoctor } from "./doctor-add.functions.js";
+import { saveDoctor, loadDoctor } from "./doctorAdd.functions.js";
 
 // Importando os componentes
 import Navbar from "../../components/navbar/navbar.jsx";
