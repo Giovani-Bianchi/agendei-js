@@ -145,11 +145,6 @@ export const loadServices = async (id_doctor, setDoctorName, setDoctorServices, 
             alert(error.response?.data.error);
         }
 
-        // Se não conseguiu obter qual é o erro vindo do servidor, então exibe a mensagem de erro padrão
-        else {
-            alert("Erro ao listar serviços do médico. Tente novamente mais tarde.");
-        }
-
     }
 
 }
