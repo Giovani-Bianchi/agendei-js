@@ -32,8 +32,8 @@ export function ProtectedRoute({ children }) {
 
     // Se loading for true, retorna um spinner de loading do Bootstrap indicando que está em carregamento, ou seja, que está no proceso de verificar o token no localStorage
     if (loading) {
-        return <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+        return <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
         </div>;
     }
 
