@@ -214,13 +214,13 @@ export const saveAppointment = async (idUser, idDoctor, idService, bookingDate, 
         // Se conseguiu inserir ou editar o agendamento, redireciona o usuário para a lista
         if (response.data) {
             if (id_appointment > 0) {
-                navigate("/appointments", { 
+                navigate("/", { 
                     state: { message: "Agendamento editado com sucesso!" } 
                 });
             }
 
             else {
-                navigate("/appointments", { 
+                navigate("/", { 
                     state: { message: "Agendamento salvo com sucesso!" } 
                 });
             }
