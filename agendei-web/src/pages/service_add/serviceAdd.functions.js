@@ -49,7 +49,7 @@ export const saveService = async (id_service, service, navigate) => {
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -90,7 +90,7 @@ export const loadService = async (id_service, setService, navigate) => {
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);

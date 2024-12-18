@@ -33,7 +33,7 @@ export const loadUsers = async (setUsers, navigate) => {
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -81,7 +81,7 @@ export const loadDoctors = async (setDoctors, id_appointment, setIdUser, setIdDo
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -126,7 +126,7 @@ const loadAppointments = async (id, setIdUser, setIdDoctor, setIdService, setBoo
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -173,7 +173,7 @@ export const loadServices = async (id, setServices, navigate) => {
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -235,7 +235,7 @@ export const saveAppointment = async (idUser, idDoctor, idService, bookingDate, 
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);

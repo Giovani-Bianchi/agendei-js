@@ -27,25 +27,10 @@ export const executeAccount = async (name, email, password, password2, setMsg, n
             password
         });
 
-        // Se no response existir o objeto 'data', significa que o registro foi bem sucedido, então guardamos os dados no LocalStorage e redirecionamos o usuário
+        // Se no response existir o objeto 'data', significa que o registro foi bem sucedido, redirecionamos o usuário para realizar o Login
         if (response.data) {
-            // Incluindo o item 'sessionToken' dentro do localStorage com o token recebido da API
-            localStorage.setItem("sessionToken", response.data.token);
-
-            // Incluindo o item 'sessionId' dentro do localStorage com o id do admin recebido da API
-            localStorage.setItem("sessionId", response.data.id_admin);
-
-            // Incluindo o item 'sessionEmail' dentro do localStorage com o email inserido no input
-            localStorage.setItem("sessionEmail", email);
-
-            // Incluindo o item 'sessionName' dentro do localStorage com o nome inserido no input
-            localStorage.setItem("sessionName", name);
-
-            // Salvando o token vindo da API para um header Authorization com o nome de "Bearer" dentro do Axios, para que todas as requisições futuras tenham o token já inseridos dentro delas, sem a necessidade de enviar novamente o token em toda requisição mesmo já estando logado
-            api.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
-
-            // Irá redirecionar o usuário para a tela de Agendamentos
-            navigate("/appointments")
+            // Irá redirecionar o usuário para a tela de Login
+            navigate("/login")
         }
 
         // Caso contrário, se não existir o objeto 'data', significa que o registro falhou, então é passado uma mensagem genérica de erro

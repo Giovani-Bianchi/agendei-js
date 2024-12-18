@@ -49,7 +49,7 @@ export const loadServices = async (id_doctor, id_doctor_service, confirmAlert, s
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -91,7 +91,7 @@ export const loadDoctorService = async (id_doctor, id_doctor_service, setIdServi
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -151,7 +151,7 @@ export const saveDoctorService = async (id_doctor_service, id_doctor, idService,
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);

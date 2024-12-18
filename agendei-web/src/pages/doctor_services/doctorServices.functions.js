@@ -94,7 +94,7 @@ const deleteDoctorService = async (id_doctor_service, id_service, id_doctor, con
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -139,7 +139,7 @@ export const loadServices = async (id_doctor, setDoctorName, setDoctorServices, 
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);

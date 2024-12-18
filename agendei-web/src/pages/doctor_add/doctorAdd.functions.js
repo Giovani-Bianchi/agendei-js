@@ -51,7 +51,7 @@ export const saveDoctor = async (id_doctor, doctor, specialty, gender, navigate)
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
@@ -94,7 +94,7 @@ export const loadDoctor = async (id_doctor, setDoctor, setSpecialty, setGender, 
         if (error.response?.data.error) {
             // Se o usuário não for autorizado a acessar essa tela, redireciona para a tela de login
             if (error.response.status == 401) {
-                return navigate('/');
+                return navigate('/login');
             }
 
             alert(error.response?.data.error);
