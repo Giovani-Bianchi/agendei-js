@@ -71,15 +71,20 @@ npm run dev
 
 ## 💻 Layout do projeto
 
-### Layout na aplicação web (clique na imagem para ter uma melhor visualização)
+<h3>Layout na aplicação web (clique na imagem para ter uma melhor visualização)</h3>
+
 <div align="center">
   <img src="https://github.com/user-attachments/assets/7550e0a9-5a42-4ba1-9b89-d6827a983b5d" height="200" width="400" />
-  <img src="https://github.com/user-attachments/assets/594e09ee-101c-46fb-af26-de35ba495076" height="200" width="400" />
-  <img src="https://github.com/user-attachments/assets/ea062d75-93f4-4e19-98fa-cd6076ec4f72" height="200" width="400" />
-  <img src="https://github.com/user-attachments/assets/bdca4ea2-d584-4b16-b054-b2caeb0caf9b" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/81cad838-12f9-4bd7-b898-e5c679e2c2ee" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/465bb657-9d6a-4115-938c-50a3c5ba35e9" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/83c60338-6d90-4d23-9899-fb1602d1cd06" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/2e1b68c0-ba73-4c8e-878a-c24cf502ffec" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/9c193af5-250f-49fc-8738-8e655edd1738" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/a8a7ceed-9fa6-4028-8c19-9b78308b0ca1" height="200" width="400" />
+  <img src="https://github.com/user-attachments/assets/b5674e4c-1eba-4180-b276-61a0dac77945" height="200" width="400" />
 </div>
 
-### Layout na aplicação mobile (clique na imagem para ter uma melhor visualização)
+<h3>Layout na aplicação mobile (clique na imagem para ter uma melhor visualização)</h3>
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/1dd77a09-3b97-46f7-b24e-3798cf45b3b8" height="300" width="150" />
