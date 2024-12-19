@@ -3,7 +3,7 @@
 </div>
 
 # Agendei JS - Sistema de consultas médicas
-Esse repositório irá conter os arquivos fontes referentes ao projeto Agendei JS da <a href="https://www.youtube.com/@devpoint.oficial">DevPoint</a>. Esse repositório foi criado após o término do curso, porém muitas funcionalidades e melhorias estavam faltando (principalmente no projeto web), daí surgiu a ideia de continuar e aprimorar a aplicação.
+Esse repositório irá conter os arquivos fonte referente ao projeto Agendei JS da <a href="https://www.youtube.com/@devpoint.oficial">DevPoint</a>. Esse repositório foi criado após o término do curso, porém muitas funcionalidades e melhorias estavam faltando (principalmente no projeto web), daí surgiu a ideia de continuar e aprimorar a aplicação.
 
 ## 📌 Sobre
 A ideia do projeto foi criar um sistema de agendas de consultas médicas com interface Web para o administrador e interface Mobile para o usuário, com uma API para o controle de requisições. O projeto engloba diferentes conceitos com as linguagens indicadas abaixo, como: criação de uma API REST com Node, navegação entre telas com React Native, utilização de token para validação de requisições, variáveis de estado, Context API, layout moderno com Bootstrap, entre diversos outros.
